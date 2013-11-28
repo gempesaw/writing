@@ -12,25 +12,32 @@ encapsulating that functionality in a defun and binding it to a key
 saves me tons of time looking up the creds each time I want to connect.
 
 
-    (defun non-interactive-sql-mysql ()
-      (let ((sql-user "username")
-            (sql-password "secret-password")
-            (sql-server "some.server.address")
-            (sql-database "testdb")
-            (sql-interactive-get-login
-             (symbol-function 'sql-get-login)))
-        (with-temp-buffer
-          ;; (cd "/ssh:remote:/home/daniel")
-          (fset 'sql-get-login 'ignore)
-          (sql-mysql (concat "\*SQL: " sql-user "@" sql-database "." sql-server "\*"))
-          (fset 'sql-get-login
-                (symbol-function 'sql-interactive-get-login)))))
+    (require 'noflet)
+
+    (setq db-lookup '((local . ((user "test")
+                                (password "pass")
+                                (server "localhost")
+                                (database "testdb")))))
+
+    (defun non-interactive-sql-mysql (server)
+      (let* ((server (assoc server db-lookup))
+             (sql-user (cadr (assoc 'user server)))
+             (sql-password (cadr (assoc 'password server)))
+             (sql-server (cadr (assoc 'server server)))
+             (sql-database (cadr (assoc 'database server))))
+        (noflet ((sql-get-login (&rest args)))
+          (with-temp-buffer
+            ;; (cd "/ssh:remote:/home/daniel")
+            (sql-mysql (concat sql-user "@"
+                               sql-database "."
+                               sql-server))))))
+
+    (non-interactive-sql-mysql 'local)
 
 
-* `(let...`: First things first, set up all the credentials and
-addresses, and hold on to the function definition of `sql-get-login`.
+* `(let ...`: First things first, set up the DSN information.
 
-* `(with-temp-buffer (cd...`: In case the sql-user you're using has
+* `(with-temp-buffer (cd ...`: In case the sql-user you're using has
 restrictive privs that dictate which IP you must use to connect to the
 server, you can leverage `TRAMP` and an appropriate entry in your
 `~/.ssh/config` file to open an ssh connection to that remote box
@@ -39,33 +46,21 @@ before attempting to connect to the sql server. `cd` changes the
 change our current buffer, we use a temp-buffer to change it and
 discard it afterwards.
 
-* `(fset 'sql-get-login 'ignore)`: This is the part that turns off the
-interactive prompting for the user/pass/db/server. But, we need to
-restore the interactive behavior of `sql-get-login` for later in case
-we invoke `M-x sql-mysql` some time later. That's why we've clumsily
-stored it in `sql-interactive-get-login` in the let-binding. The
-cleaner way to do this would've been to use `flet`, but that was
-deprecated in recent versions of Emacs. There are replacement
-libraries available - I know of at least one by Nic Ferrier, and I'm
-speculating that `mocker.el` should be able to provide similar
-functionality. But, for the time being, it's just `fset` before and
-after :P.
+* `(nofet ((sql-get-login ...`: This is the part that turns off the
+interactive prompting for the user/pass/db/server. Since `flet` has
+been deprecated, we're using Nic Ferrier's [`noflet`][noflet] to convince
+`sql-get-login` not to prompt us in the minibuffer.
 
-* `(sql-mysql)`: And now to open the sql connection without
+* `(sql-mysql ...`: And now to open the sql connection without
 interactively prompting you for anything! Wonderful - `sql-mysql`
 accepts as its single argument the name of the buffer to be created,
 which we can specify based on the user, db, and server in question.
 
-I also came across an interesting looking elisp package that uses
+I also came across an interesting looking [elisp package][edbi] that uses
 Perl's `DBI` to provide an interactive MySQL session (like queries
 that update as you change them?!) but I haven't looked into it much
-further than skimming the README on Github.
+further than skimming the README on Github. It looks really powerful,
+though, and it would completely obsolete the above snippet.
 
-If you're interested in using SQLi-mode for a MySQL db, like [Bozhidar
-mentions for Postgres][bb] - editing your SQL queries in
-a separate `.sql` file and sending them over to the MySQL buffer, I
-had to set the product `M-x sql-set-product RET mysql RET` in the
-`.sql` file buffer before `sql-set-sqli-buffer` recognized the
-`*SQL*` buffer as a viable selection.
-
-[bb]: d
+[noflet]: https://github.com/nicferrier/emacs-noflet
+[edbi]: https://github.com/kiwanami/emacs-edbi/
