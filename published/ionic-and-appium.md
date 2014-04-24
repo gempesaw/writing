@@ -154,8 +154,7 @@ Cordova splash screen. Without that last sleep, the app pops open and
 closed too quickly to notice, but of course you can remove it when
 writing real test scripts.
 
-![ionic and appium](https://24.media.tumblr.com/86e48dd9a4d562ada08f0e1f6a93d7e6/tumblr_n4jfqePOip1qahaiko1_1280.png
- =250x)
+![ionic and appium](https://24.media.tumblr.com/86e48dd9a4d562ada08f0e1f6a93d7e6/tumblr_n4jfqePOip1qahaiko1_1280.png =250x)
 
 [docs]: https://github.com/appium/appium/blob/master/docs/en/caps.md
 [^1]: To emulate the Android app, there's some useful information
