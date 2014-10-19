@@ -441,6 +441,20 @@
               {Answer}
             {/block:Answer}
             
+            {block:Date}
+              <footer>
+                <ul class="small">
+                  <li><a href="{Permalink}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
+                  {block:RebloggedFrom}<li class="source"> (reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>)</li>{/block:RebloggedFrom}
+                  {block:ContentSource}
+                    <li class="source">via <a href="{SourceURL}">{SourceTitle}</a></li>
+                  {/block:ContentSource}
+                </ul>
+                
+              </footer>
+            {/block:Date}
+
+            
             {block:PermalinkPage}
             {block:IfDisqusShortname}
 
@@ -460,33 +474,10 @@
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by<span class="logo-disqus">Disqus</span></a>
 
             {/block:IfDisqusShortname}
-            {block:PermalinkPage}
+            
+            {/block:PermalinkPage}
+            </article> <!-- /post -->   
 
-            {block:Date}
-              <footer>
-                <ul class="small">
-                  <li><a href="{Permalink}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
-                  {block:RebloggedFrom}<li class="source"> (reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>)</li>{/block:RebloggedFrom}
-                  {block:ContentSource}
-                    <li class="source">via <a href="{SourceURL}">{SourceTitle}</a></li>
-                  {/block:ContentSource}
-                </ul>
-                
-                {block:PermalinkPage}
-                    {block:HasTags}
-                        <ul class="tags">
-                          {block:Tags}
-                            <li>
-                              <a href="{TagURL}">#{Tag}</a>
-                            </li>
-                          {/block:Tags}
-                        </ul>
-                    {/block:HasTags}      
-                {/block:PermalinkPage}
-                              
-              </footer>
-            {/block:Date}
-          </article> <!-- /post -->     
 
         {/block:Posts}
         
