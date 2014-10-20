@@ -326,7 +326,79 @@
         margin-left: 3em;
       }
       
-      {CustomCSS}
+     pre > code { font-family: monospace; font-size: 1.2em}
+
+     #footer {
+         bottom: 0px;
+         min-height: 4em;
+         height: auto !important;
+         text-align: center;
+         position: relative;
+         width: 100%;
+         max-width: 100% !important;
+         background-color: #ccc;
+     }
+     
+     #footer div.attribution {
+         max-width: 48em;
+         width: 100%;
+         margin: auto;
+         padding: auto;
+     }
+     
+     #footer a {
+         color: #777;
+         display: block;
+         line-height: 3rem;
+     }
+     
+     #footer a:hover {
+         background: #ddd;
+     }
+     
+     .wrapper {
+         height: auto !important;
+         height: 100%;
+         margin: auto;
+     }
+     
+     #footer .push { height: 0em; }
+     
+     .footer-separator {display: none}
+     
+     @media screen and (min-width: 640px) {
+         #footer, .push { height: 6em !important; }
+     
+         .wrapper {
+             min-height: 100%;
+             height: auto !important;
+             height: 100%;
+             margin: 0 auto -6em;
+         }
+     
+         #footer a {
+             border: none;
+             display: inline-block;
+             padding: 0 1rem;
+             margin: 1rem auto;
+         }
+     
+         .footer-separator {display: inline}
+     }
+     
+     #disqus_thread {
+         padding-top: 40px;
+     }
+     
+     code {
+         padding: 0;
+         padding-top: 0.2em;
+         padding-bottom: 0.2em;
+         margin: 0;
+         font-size: 95%;
+         background-color: rgba(0,0,0,0.04);
+         border-radius: 3px;
+     }        
       
     </style>
 </head>
