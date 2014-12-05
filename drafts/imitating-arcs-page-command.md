@@ -51,12 +51,12 @@ contained on the same line, and also we have no Android support
 whatsoever, but it's already useful to me! This will probably be
 coming in a future release of Perl's [Appium bindings][].
 
-[Appium][https://github.com/appium/appium/]
-[Webdriver][https://github.com/SeleniumHQ/selenium]
-[ruby bindings][https://github.com/appium/ruby_lib]
-[arc][https://github.com/appium/ruby_console]
-[pry][https://github.com/pry/pry]
-[`page`][https://github.com/appium/ruby_lib/blob/ad10640c58ba1435b32a4d3a8268f66ae4c4b74e/lib/appium_lib/ios/helper.rb#L125-L152]
-[`app_strings`][https://metacpan.org/pod/Appium#app_strings-language]
-[`state`][http://perldoc.perl.org/functions/state.html]
-[Appium bindings][http://metacpan.org/pod/Appium]
+[Appium]: https://github.com/appium/appium/
+[Webdriver]: https://github.com/SeleniumHQ/selenium
+[ruby bindings]: https://github.com/appium/ruby_lib
+[arc]: https://github.com/appium/ruby_console
+[pry]: https://github.com/pry/pry
+[`page`]: https://github.com/appium/ruby_lib/blob/ad10640c58ba1435b32a4d3a8268f66ae4c4b74e/lib/appium_lib/ios/helper.rb#L125-L152
+[`app_strings`]: https://metacpan.org/pod/Appium#app_strings-language
+[`state`]: http://perldoc.perl.org/functions/state.html
+[Appium bindings]: http://metacpan.org/pod/Appium
