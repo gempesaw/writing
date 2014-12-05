@@ -8,20 +8,22 @@ appium REPL-style, interactively via [pry][]. One of the commands in
 arc is especially useful\: [`page`][] lists all the elements on the
 current view of the mobile app that you are able to interact with. So,
 anything you can tap, swipe, or input into, `page` will tell you
-about, along with some identifying information, if any is available.
+about, along with some identifying information, if any is
+available. Since we're using the Perl bindings at work, we don't
+immediately have access to the `page` command, but the beautiful thing
+about Appium's set up is that its just a matter of translating between
+languages to port new functionality over!
 
-Since we're using the Perl bindings at work, we don't immediately have
-access to the `page` command, but the beautiful thing about Appium's
-set up is that its just a matter of translating between languages to
-port new functionality over! I started with the iOS version of `page`,
-as the implementation is actually pretty different between iOS and
-Android. We basically use a plain UIAutomation command to get
-information about the current view from iOS instruments, and then
-spend some time formatting the results to show to the
-user. UIAutomation is iOS's way of automating iOS apps - it looks a
-lot like javascript, and it lets you interact with the apps in
+I started with the iOS version of `page`, as the implementation is
+actually pretty different between iOS and Android. In order to get
+information about the current view of the iOS app, we have to use
+UIAutomation. UIAutomation is iOS's way of automating iOS apps - it
+looks a lot like javascript, and it lets you interact with the apps in
 question. I believe this is what Appium uses to control iOS: it
-translates between its REST interface and iOS under the hood.
+translates between its REST interface and UIAutomationOS under the
+hood. We use a plain UIAutomation command to get information about the
+current view from iOS instruments, and then spend some time formatting
+the results to show to the user.
 
 First off, we need to determine which "source window" has any elements
 of interest. I'm not entirely clear on what these are, but often the
@@ -41,15 +43,16 @@ requests. Using `state` instead of `my` means we just instantiate
 `$app_strings` once, the first time we come across that line of code,
 instead of every time we run the function.
 
-Finally, we look at the children of our element and run `page` on
-our children, and in a depth-first we'll eventually list all of our
+Finally, we look at the children of our element and run `page` on our
+children, and in a depth-first we'll eventually list all of our
 visible elements.
 
 It's not a 1-to-1 translation of the ruby lib's page command, as they
-do some work to ensure that duplicated details about the element are
-contained on the same line, and also we have no Android support
-whatsoever, but it's already useful to me! This will probably be
-coming in a future release of Perl's [Appium bindings][].
+take filtering arguments, and also do some work to ensure that
+duplicated details about the element are contained on the same line,
+and also we have no Android support whatsoever, but it's already
+useful to me! This will probably be coming in a future release of
+Perl's [Appium bindings][].
 
 [Appium]: https://github.com/appium/appium/
 [Webdriver]: https://github.com/SeleniumHQ/selenium
