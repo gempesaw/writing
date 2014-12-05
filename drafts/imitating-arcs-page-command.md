@@ -14,6 +14,8 @@ immediately have access to the `page` command, but the beautiful thing
 about Appium's set up is that its just a matter of translating between
 languages to port new functionality over!
 
+[[MORE]]
+
 I started with the iOS version of `page`, as the implementation is
 actually pretty different between iOS and Android. In order to get
 information about the current view of the iOS app, we have to use
