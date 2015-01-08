@@ -122,8 +122,6 @@ Appium server running (verify via `wget
 localhost:4723/wd/hub/status`), the following script should get you
 started after you fill in the path to your apk.
 
-    #! /usr/bin/perl
-
     use strict;
     use warnings;
     use Appium;
