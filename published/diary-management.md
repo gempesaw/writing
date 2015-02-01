@@ -1,6 +1,6 @@
 # Using Emacs for daily reminders to write in my ~/diary
 
-![diary](diary-management.png)
+![diary](https://raw.githubusercontent.com/gempesaw/writing/master/published/diary-management.png)
 
 I worked remotely for a year or so and I took it upon myself to figure
 out ways to improve my communication with HQ. One of the useful things
