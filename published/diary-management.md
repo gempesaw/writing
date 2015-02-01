@@ -8,16 +8,16 @@ in addition to daily standup check-ins and weekly 1 on 1s and so
 on). I soon realized that I had no memory at all for recalling what I
 did the previous day, much less for a whole week, so I began looking
 into what options Emacs offered for daily diary note-keeping kind of
-things.
+things[^1].
 
-This is unfortunately not an org mode post, as that's one of the Emacs
-things that I have actually managed not to do so far. So instead, my
-googling told me that I should to use the `calendar` and `diary`
+Google brought me that I should to use the `calendar` and `diary`
 functions to make my notes. `M-x calendar` brings up a three month
 calendar view, and `M-x diary` opens the `~/diary` file on your
 computer in a special `diary-mode`. Each line in the diary file starts
 with the date in whatever format you want (`'iso`), and then you can
-put notes for that day.
+put notes for that day. When cursoring about the calendar, pressing
+<kbd>i d</kbd> opens up the diary with a new entry for that date ready
+to accept some text.
 
     ;; dg-diary.el
     (require 'calendar)
@@ -50,10 +50,8 @@ reminder in Emacs and came up with the following:
 Basically, [`run-at-time`][rat] is doing all the work here. There's a
 little work to make sure I'm not setting tons of reminders by
 automatically clearing the existing `daily reminder`. Otherwise, we
-calculate the number of seconds in a day and set our function to be
+just handle the number of seconds in a day and set our function to be
 called daily.
-
-[rat]: something
 
 `toggle-diary-windows` is a function that stores my current window
 configuration before bringing up the calendar and the diary, putting
@@ -87,14 +85,17 @@ useful to be able to toggle my whole window configuration to and from
 setups that allow me to do those tasks.
 
 After penning quick summary of the day's work, I use my diary
-keybinding to toggle back to my prevoius window configuration and
+keybinding to toggle back to my previous window configuration and
 continue on my way. At the end of the week, I've got a few sentence
 fragments for each day and an easy way to write the Accomplishments,
 Blockers, and Next Week sections of my weekly summary.
 
 If you liked this post, you may also be interested in how
-[Sacha Chua is doing her diary-ing!][sc]! My complete file for
+[Sacha Chua is doing her process journaling!][sc]! My complete file for
 customizing my diary interactions is [on Github][dg-diary].
 
-[sc]: sacha chua
-[dg-diary]:
+[rat]: https://www.gnu.org/software/emacs/manual/html_node/elisp/Timers.html
+[sc]: http://sachachua.com/blog/2014/11/using-org-mode-keep-process-journal/
+[dg-diary]: https://github.com/gempesaw/dotemacs/blob/emacs/dg-elisp/dg-diary.el
+
+[^1]: This is unfortunately not an org mode post, as that's one of the Emacs things that I have actually managed not to do so far.
