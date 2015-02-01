@@ -1,5 +1,7 @@
 # Using Emacs for daily reminders to write in my ~/diary
 
+![diary](diary-management.png)
+
 I worked remotely for a year or so and I took it upon myself to figure
 out ways to improve my communication with HQ. One of the useful things
 I found was sending a weekly email summary to my manager, as a touch
@@ -10,7 +12,7 @@ did the previous day, much less for a whole week, so I began looking
 into what options Emacs offered for daily diary note-keeping kind of
 things[^1].
 
-Google brought me that I should to use the `calendar` and `diary`
+Google told me that I should to use the `calendar` and `diary`
 functions to make my notes. `M-x calendar` brings up a three month
 calendar view, and `M-x diary` opens the `~/diary` file on your
 computer in a special `diary-mode`. Each line in the diary file starts
