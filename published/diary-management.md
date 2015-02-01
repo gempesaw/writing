@@ -4,13 +4,12 @@
 
 I worked remotely for a year or so and I took it upon myself to figure
 out ways to improve my communication with HQ. One of the useful things
-I found was sending a weekly email summary to my manager, as a touch
-point for them to be able to see my week to week progress. (This was
-in addition to daily standup check-ins and weekly 1 on 1s and so
-on). I soon realized that I had no memory at all for recalling what I
-did the previous day, much less for a whole week, so I began looking
-into what options Emacs offered for daily diary note-keeping kind of
-things[^1].
+I found was [sending a weekly email summary][weekly] to my manager, as
+a touch point for them to be able to see my week to week
+progress[^1]. I soon realized that I had no memory at all for
+recalling what I did the previous day, much less for a whole week, so
+I began looking into what options Emacs offered for daily diary
+note-keeping kind of things[^2].
 
 Google told me that I should to use the `calendar` and `diary`
 functions to make my notes. `M-x calendar` brings up a three month
@@ -34,7 +33,7 @@ The diary and the calendar have a pretty tight integration that I'm
 still trying to learn! Of course, the biggest issue was remembering to
 actually remember to write in my diary in the first place. For a
 while, I had a Google Now reminder, but a daily reminder ended up
-clogging the entire Inbox interface, as they realy call reminders to
+clogging the entire Inbox interface, as they really call reminders to
 the forefront there. So, I tried to figure out how to set a daily
 reminder in Emacs and came up with the following:
 
@@ -96,8 +95,10 @@ If you liked this post, you may also be interested in how
 [Sacha Chua is doing her process journaling!][sc]! My complete file for
 customizing my diary interactions is [on Github][dg-diary].
 
+[weekly]: https://dria.wordpress.com/2010/02/25/on-11s/
 [rat]: https://www.gnu.org/software/emacs/manual/html_node/elisp/Timers.html
 [sc]: http://sachachua.com/blog/2014/11/using-org-mode-keep-process-journal/
 [dg-diary]: https://github.com/gempesaw/dotemacs/blob/emacs/dg-elisp/dg-diary.el
 
-[^1]: This is unfortunately not an org mode post, as that's one of the Emacs things that I have actually managed not to do so far.
+[^1]: This was in addition to daily standup check-ins and weekly 1 on 1s and so on - I wanted to do _more_ communication on top of all that.
+[^2]: This is unfortunately not an org mode post, as that's one of the Emacs things that I have actually managed not to do so far.
