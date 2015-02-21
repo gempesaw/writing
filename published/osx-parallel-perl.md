@@ -7,7 +7,8 @@ webdriver automation framework as part of the e2e process. Although
 webdriver is now significantly faster than it used to be, running
 twenty tests in parallel is an order of magnitude quicker than running
 them all in series. I've started using [Test::ParallelSubtest][] to
-achieve this speedup.
+achieve this speedup, due to trouble installing Test::Parallel on OS
+X.
 
 [[MORE]]
 
@@ -18,29 +19,25 @@ reinstalling Test::Parallel to no
 avail. [Sys::Statistics::Linux::MemStats][] is failing its
 configuration because OS X/darwin isn't the intended platform.
 
-```
-bash-3.2$ cpanm -nf Test::Parallel
---> Working on Test::Parallel
-Fetching http://www.cpan.org/authors/id/A/AT/ATOOMIC/Test-Parallel-0.20.tar.gz ... OK
-Configuring Test-Parallel-0.20 ... OK
-==> Found dependencies: Sys::Statistics::Linux::MemStats
---> Working on Sys::Statistics::Linux::MemStats
-Fetching http://www.cpan.org/authors/id/B/BL/BLOONIX/Sys-Statistics-Linux-0.66.tar.gz ... OK
-Configuring Sys-Statistics-Linux-0.66 ... N/A
-! Configure failed for Sys-Statistics-Linux-0.66. See /Users/dgempesaw/.cpanm/work/1424475457.49669/build.log for details.
-! Installing the dependencies failed: Module 'Sys::Statistics::Linux::MemStats' is not installed
-! Bailing out the installation for Test-Parallel-0.20.
-```
+    bash-3.2$ cpanm -nf Test::Parallel
+    --> Working on Test::Parallel
+    Fetching http://www.cpan.org/authors/id/A/AT/ATOOMIC/Test-Parallel-0.20.tar.gz ... OK
+    Configuring Test-Parallel-0.20 ... OK
+    ==> Found dependencies: Sys::Statistics::Linux::MemStats
+    --> Working on Sys::Statistics::Linux::MemStats
+    Fetching http://www.cpan.org/authors/id/B/BL/BLOONIX/Sys-Statistics-Linux-0.66.tar.gz ... OK
+    Configuring Sys-Statistics-Linux-0.66 ... N/A
+    ! Configure failed for Sys-Statistics-Linux-0.66. See /Users/dgempesaw/.cpanm/work/1424475457.49669/build.log for details.
+    ! Installing the dependencies failed: Module 'Sys::Statistics::Linux::MemStats' is not installed
+    ! Bailing out the installation for Test-Parallel-0.20.
 
 and in the build log
 
-```
-Configuring Sys-Statistics-Linux-0.66
-Running Build.PL
-OS unsupported! Sorry, but this system seems not to be a linux system! at Build.PL line 5.
-Running Makefile.PL
-OS unsupported! Sorry, but this system seems not to be a linux system! at Makefile.PL line 3.
-```
+    Configuring Sys-Statistics-Linux-0.66
+    Running Build.PL
+    OS unsupported! Sorry, but this system seems not to be a linux system! at Build.PL line 5.
+    Running Makefile.PL
+    OS unsupported! Sorry, but this system seems not to be a linux system! at Makefile.PL line 3.
 
 But, like previously mentioned, Test::ParallelSubtest installs just
 fine. It does take a little change to the test code itself, as it
