@@ -35,10 +35,16 @@ my $text = $d->find_element_by_css('div')->get_text
 The problem with putting in a sleep before attempting to find the
 element is that it will usually work, but maybe one time in twenty it
 will fail, and it won't be immediately apparent why it failed,
-especially months down the line.
+especially months down the line. What we want is a method that
+reliably and consistently waits exactly until the element in question
+is ready. We don't want to wait any longer than necessary, so a long
+explicit sleep is out, but we don't want to go early, or else we'll
+get exceptions all over the place. `wait_until` lets us get pretty
+close to this ideal behavior:
 
 ```perl
 my $elem = wait_until { $d->find_element_by_css('div') };
+# wait_until will also catch dies and croaks
 if ($elem) {
     say 'Text: ' . $elem->get_text;
 }
@@ -52,8 +58,10 @@ wraps the block execution in a `try`/`catch` from [Try::Tiny][]. By
 [default][], it will run for thirty seconds, sleeping one second
 between iterations. If at any point the block returns something true,
 it immediately returns that value as its result. Note that
-`wait_until` expects a block that is generally NON-blocking, so you'll
-want to set the appropriate timeout to a second or less.
+`wait_until` expects a block that is generally NON-blocking, so if
+webdriver has an associated timeout, like the implicit wait timeout
+for finding elements, you'll want to set it to a second or less if
+you've increased it.
 
 You can also use wait_until to do have your test block until the
 element is visible, or some other boolean property:
@@ -63,6 +71,21 @@ my $visible_elem = wait_until {
     $d->find_element_by_id('eventually-visible')->is_displayed
 };
 ```
+
+Finally, as mentioned, `wait_until` wraps everything in a `try`, so if
+the BLOCK you passed in does die, it'll get demoted to a warn. This
+means you MUST check the return value of `wait_until`. Normally,
+Selenium::Remote::Driver will croak when we run into something we
+don't understand [^1]. Since we're only warning, it's possible you may
+get into some weird territory if you make assumptions about the return
+value. Honestly, I'm still not sure about this behavior - perhaps it
+makes sense for `wait_until` to die if the expected value never
+returns true.
+
+[^1]: Although it can be frustrating, it's helpful for the
+program to die as close as possible to the source of the crash. Also,
+from the test's point of view, we have no idea what to do if we get an
+unexpected exception.
 
 [halting problem]: https://groups.google.com/forum/#!msg/webdriver/7K2QWGVNCYo/PngL9YDXDLgJ
 [Selenium::Waiter]: https://metacpan.org/pod/Selenium::Waiter
