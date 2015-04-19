@@ -25,6 +25,8 @@ some implementation details, and simple usage examples. :)
 [Chrome]: https://metacpan.org/pod/Selenium::Chrome
 [PhantomJS]: https://metacpan.org/pod/Selenium::PhantomJS
 
+[[MORE]]
+
 ### usage
 
 Hopefully the usage is pretty straightforward - instead of
