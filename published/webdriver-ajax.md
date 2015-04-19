@@ -23,13 +23,11 @@ page, it does block briefly while it runs through its own algorithms
 to figure out when the page is done loading. But, it being the halting
 problem and all, they obviously can't solve it for all the cases.
 
-    ```perl
     my $d = Selenium::Firefox->new;
     $d->get($tricky_slow_loading_page);
 
     # this will throw when the element isn't present
     my $text = $d->find_element_by_css('div')->get_text
-    ```
 
 The problem with putting in a sleep before attempting to find the
 element is that it will usually work, but maybe one time in twenty it
@@ -41,7 +39,6 @@ explicit sleep is out, but we don't want to go early, or else we'll
 get exceptions all over the place. `wait_until` lets us get pretty
 close to this ideal behavior:
 
-    ```perl
     # wait_until will also catch dies and croaks
     my $elem = wait_until { $d->find_element_by_css('div') };
     if ($elem) {
@@ -50,8 +47,6 @@ close to this ideal behavior:
     else {
         say 'We waited thirty seconds without finding css=div';
     }
-    ```
-
 
 `wait_until` takes a block and an optional hashref of arguments. It
 wraps the block execution in a `try`/`catch` from [Try::Tiny][]. By
@@ -72,20 +67,16 @@ return control to your script after executing exactly one
 `find_element`. (This may be the behavior you desire - but just make
 sure you're doing it on purpose!)
 
-    ```perl
     my $d = Selenium::Firefox->new;
     $d->set_implicit_wait_timeout(30000);
     my $one_iteration = wait_until { $d->find_element('this is blocking', 'css') };
-    ```
 
 You can also use `wait_until` to have your test block until the
 element is visible, or some other boolean property:
 
-    ```perl
     my $visible_elem = wait_until {
         $d->find_element_by_id('eventually-visible')->is_displayed
     };
-    ```
 
 Finally, as mentioned, `wait_until` wraps everything in a `try`, so if
 the BLOCK you passed in does die, it'll get demoted to a warn. This
