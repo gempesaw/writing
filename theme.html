@@ -327,9 +327,9 @@ Terms: Protected under Creative Commons.
      }
 
      pre > code {
-       font-family: monospace; 
-       font-size: 1.2em;
-       word-wrap: break-word;
+         font-family: monospace;
+         font-size: 1.2em;
+         word-wrap: break-word;
      }
 
      #footer {
@@ -594,7 +594,12 @@ Terms: Protected under Creative Commons.
     </div>
 
     <script type="text/javascript" src="http://gempesaw.github.com/javascripts/highlight.pack.js"></script>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+     hljs.initHighlightingOnLoad();
+     Array.prototype.slice.call(
+         document.querySelectorAll( 'a[rel=footnote], a[rev=footnote]' )
+     ).forEach( function (node) { node.target = ''; } );
+    </script>
 
   </body>
 </html>
