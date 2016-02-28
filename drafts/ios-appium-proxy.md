@@ -62,7 +62,9 @@ very much at all, obviously).
 
 You need to install and trust the cert offered by your proxy. For
 Browsermob, this means you should go to the
-[browsermob cert on github], and then click the `Raw` button
+[browsermob cert on github] (the link is valid at time of writing, but
+in case the link 404s, you'll want to search that github repository
+for `ca-certificate-rsa.cer`), and then click the `Raw` button
 there. This will open up the .cer file in Safari, and Safari figures
 out that it should install it as a profile. You'll need to click
 Verify or Trust a few times during this process, and afterwards you
@@ -117,16 +119,16 @@ it, so it must be set during iwdp startup.
 
 For me, this ends up looking like
 
-    TODO TODO TODO TODO
+    ios_webkit_debug_proxy -c <UDID>:27753
 
 #### Appium
 
-As per the [Appium hybrid app testing docs], one way to start Appium
+As per the [Appium hybrid app testing docs][], one way to start Appium
 is to either have cloned the Github repo, or to go into your
-node_modules folder and work from in there. During Appium startup,
-you should also pass the UDID of the device, which looks like:
+node_modules folder and work from in there. During Appium startup, you
+should also pass the UDID of the device, which looks like:
 
-    TODO TODO TODO TODO
+    node /lib/server/main.js -U <UDID>
 
 ## Running a Test
 
@@ -134,16 +136,16 @@ At this point, this ridiculously fragile set up should be ready for
 you to run some code. You have a proxy server running for capturing
 HARs, IWDP running to comms to/from the webviews, and Appium running
 so you can use the handy JSONWireProtocol to drive the
-website. Meanwhile, your iOS device is connected via USB, its network
-connection is configured to use the manual proxy of your choosing, AND
-you convinced Apple with bribes of money and PII to let you install
+website. Meanwhile, your iOS device is connected via USB, it trusts
+your MITM proxy, its network connection is configured to use the
+manual proxy of your choosing, and you bribed Apple to let you install
 your own apps on your own hardware. Excellent!
 
 Your code only has to do a few things to get you going:
 
 - For BMP, start a proxy on the proper port. If you're not using BMP,
   this may be look different[^5]
-- (optional) Check your appium server and murder any existing Appium
+- (optional) Check your appium server and kill any existing Appium
   sessions[^6]
 - Pass the proper desiredCaps to tell Appium you want to run Safari
 - After the test is done, take down the proxy you created (so we can
@@ -286,8 +288,8 @@ fact that we're hardcoding the proxy port. If we were able to run two
 tests at once across the same proxy port, there'd be no way to
 separate what traffic came from which test.
 
-[Browsermob Proxy]: TODO TODO TODO TODO
-[perl bindings]: TODO TODO TODO TODO
-[mitmproxy]: TODO TODO TODO TODO
-[Appium hybrid app testing docs]: TODO TODO TODO TODO
-[browsermob cert on github]: TODO TODO TODO TODO
+[Browsermob Proxy]: https://bmp.lightbody.net/
+[perl bindings]: https://metacpan.org/pod/Browsermob::Proxy
+[mitmproxy]:https://mitmproxy.org/
+[Appium hybrid app testing docs]: http://appium.io/slate/en/master/?ruby#automating-mobile-web-apps
+[browsermob cert on github]: https://github.com/lightbody/browsermob-proxy/blob/56a0ba5726a6339b2f6284db67f4cf557fca3a6e/browsermob-core/src/main/resources/sslSupport/ca-certificate-rsa.cer
