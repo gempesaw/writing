@@ -1,26 +1,20 @@
-# Proxying Safari traffic on a real iOS device with Appium
+# Proxying Safari network traffic on a real iOS device with Appium
 
 At $WORK, we need to analyze our network traffic during our mobile web
 tests. In particular, we want to double check our analytics calls,
 since they're of utmost import. For a desktop browser, this is baked
-right in to Webdriver: using the `proxy` desiredCapability during
-browser instantiation takes care of all the hard work on the
-browser-setup side. Besides that desiredCapability, we need to stand
-up a proxy that captures HARs, configure the browser, use webdriver to
-generate the traffic, and then analyze the HARs appropriately.
-
-For a mobile test through Appium, things are a bit more complicated,
-and doubly so for a real iOS device. Unfortunately, using a proxy is
-not possible while using Appium with a native app - this method is
-only for inspecting Safari traffic[^1].
+right in to Webdriver with the `proxy` desiredCapability, but for a
+mobile test through Appium, things are a bit more complicated, and
+doubly so for a real iOS device. Note that unfortunately, using a
+proxy is not possible while using Appium with a native app - this
+method is only for inspecting Safari traffic[^1].
 
 So, you'll need a couple things to get this set up:
 
 - a real iOS device with which to test
-- an Apple Developer license, or whatever it's called - it costs
-  $99/year, unfortunately
+- an Apple Developer license - TODO TODO TODO
 - Appium
-- A proxy capable of on the fly SSL MITM. I use [Browsermob Proxy]
+- A proxy capable of on-the-fly SSL MITM. I use [Browsermob Proxy]
   with its [perl bindings], but you can of course choose your
   own. [mitmproxy] is a popular Python proxy that would also work.
 
@@ -28,57 +22,61 @@ So, you'll need a couple things to get this set up:
 
 ## Preparing the real iOS device
 
-#### Bribe apple to let you install your software on your hardware
+#### Get permission to install your own apps on your iOS device
 
 There are pretty good instructions on how to do this in the
-[Appium hybrid app testing docs]. Basically, you create a certificate
-signing request, upload it to the dev center, and then create and
-download a wildcard provisioning profile. Opening that profile in
-XCode should install it, and then you tell Appium your credentials so
-it will let you install applications on the actual device.
+[Appium hybrid app testing docs], copied here for clarity, since it's
+difficult to link to this specific section of the docs:
+
+> Step 1: Create a new App Id and select the WildCard App ID option and set it to “*”
+> Step 2: Create a new Development Profile and for App Id select the one created in step 1.
+> Step 3: Select your certificate(s) and device(s) and click next.
+> Step 4: Set the profile name and generate the profile.
+
+Note that you will need to pay $99 to do this in the Apple Developer
+center. At this point, download the provisioning profile and tell
+XCode about it by opening the provisioning profile in XCode.
 
 The idea here is to indicate to Apple that we are an iOS developer, so
 that they let us install native applications on our real device,
-ostensibly for testing our native app. The provisioning profile is
-actually used to install SafariLauncher on the real device, which is a
-tiny app that launches Safari for us[^3].
+ostensibly for testing a native app we're developing. The provisioning
+profile is actually used to install SafariLauncher on the real device,
+which is a tiny app that launches Safari for us[^3].
 
 At some point before trying to run your test, you'll need to connect
-the iOS device to the computer via the thunderbolt cable.
+the iOS device to the computer via USB cable; now's as good a time as
+any.
 
-#### Turn on Web Inspector for your iOS's Safari
-
-This one is pretty straightforward - go into Settings -> Safari ->
-Advanced -> Web Inspector and make sure it's turned on[^4].
-
-#### Trick your device into trusting your proxy
+#### Instruct your device to trust your MITM
 
 As expected, when you try to MITM your own SSL traffic, your iOS
-device will sense the funny business and refuse to let you do so since
-the SSL connection gets terminated at the proxy before your device,
-and when the network traffic hits your iOS device, it's been resigned
-with the proxy's cert (or something, I don't understand this business
-very much at all, obviously).
+device will realize that the SSL traffic has been intercepted and
+refuse to load it.
 
 You need to install and trust the cert offered by your proxy. For
 Browsermob, this means you should go to the
 [browsermob cert on github] (the link is valid at time of writing, but
 in case the link 404s, you'll want to search that github repository
 for `ca-certificate-rsa.cer`), and then click the `Raw` button
-there. This will open up the .cer file in Safari, and Safari figures
-out that it should install it as a profile. You'll need to click
-Verify or Trust a few times during this process, and afterwards you
-can check what invalid certs your device trusts in Settings -> TODO
-TODO TODO.
+there. This will open up the `.cer` file in Safari, and Safari figures
+out that it should try to install it as a profile. You'll need to
+click Verify or Trust a few times during this process, and afterwards
+you can check what certs your device trusts in Settings -> TODO TODO
+TODO.
+
+#### Turn on Web Inspector for your iOS's Safari
+
+This one is pretty straightforward - go into `Settings -> Safari ->
+Advanced -> Web Inspector` and make sure it's turned on[^4].
 
 ## Starting servers
 
 #### Proxy Server
 
-As mentioned, in my case I use Browsermob Proxy to capture the network
-traffic into a HAR. You are free to use any proxy setup you want,
-noting that being able to programatically create and delete proxies is
-very useful. So, I'd need to start the Browsermob server - after
+As mentioned, I use Browsermob Proxy to capture the network traffic
+into a HAR. You are free to use any proxy setup you want, noting that
+being able to programatically create and delete proxies is very
+useful. So, I'd need to start the Browsermob server - after
 downloading the Browsermob binaries, that should simply be
 
     # defaults to running a server on 8080
@@ -94,7 +92,7 @@ The HOST will be the address of your proxy server, in my case wherever
 I'm running Browsermob Proxy. You can use ifconfig/ipconfig to get the
 IP of the machine on the network. Note that you shouldn't use
 localhost/127.0.0.1 for this, since the iOS device will be searching
-the network for the address, so it needs to be an IP that the iOS
+on the network for the address, so it needs to be an IP that the iOS
 device can see.
 
 The PORT needs to be selected at this point and manually put into the
@@ -121,31 +119,22 @@ For me, this ends up looking like
 
     ios_webkit_debug_proxy -c <UDID>:27753
 
-#### Appium
-
-As per the [Appium hybrid app testing docs][], one way to start Appium
-is to either have cloned the Github repo, or to go into your
-node_modules folder and work from in there. During Appium startup, you
-should also pass the UDID of the device, which looks like:
-
-    node /lib/server/main.js -U <UDID>
-
 ## Running a Test
 
-At this point, this ridiculously fragile set up should be ready for
-you to run some code. You have a proxy server running for capturing
-HARs, IWDP running to comms to/from the webviews, and Appium running
-so you can use the handy JSONWireProtocol to drive the
-website. Meanwhile, your iOS device is connected via USB, it trusts
-your MITM proxy, its network connection is configured to use the
-manual proxy of your choosing, and you bribed Apple to let you install
-your own apps on your own hardware. Excellent!
+At this point, this fragile set up should be ready for you to run some
+code. You have a proxy server running for capturing HARs, IWDP running
+comms to/from the webviews, and Appium running so you can use the
+handy JSONWireProtocol to drive Safari around your website. Meanwhile,
+your iOS device is connected via USB, it trusts your MITM proxy, its
+network connection is configured to use the manual proxy of your
+choosing, and you bribed Apple to let you install your own apps on
+your own hardware. Excellent!
 
 Your code only has to do a few things to get you going:
 
 - For BMP, start a proxy on the proper port. If you're not using BMP,
   this may be look different[^5]
-- (optional) Check your appium server and kill any existing Appium
+- (optional): Check your appium server and kill any existing Appium
   sessions[^6]
 - Pass the proper desiredCaps to tell Appium you want to run Safari
 - After the test is done, take down the proxy you created (so we can
@@ -209,8 +198,9 @@ Additionally, it's a bit of a hassle to have to interact with the
 physical device to set the port and accept the fake SSL cert. For
 server configs, you can do something like schedule Puppet to regularly
 reset the configs to the proper state to alleviate silly humans trying
-to change things. But, for an actual physical iOS device, I can't
-prevent people from fooling with it as they please.
+to change things. But, for an actual physical iOS device, I don't know
+how to restore a configuration, and we can't prevent people from
+fooling with it accidentally, either.
 
 Another point is that the proxy server you use needs to be able to do
 on the fly SSL MITM. There are definitely proxies that do this -
@@ -227,23 +217,24 @@ spent otherwise.
 
 ## Conclusion
 
-In summary, this is quite the shaky house of cards. But, after having
-gotten everything set up and just trying not to touch anything, it's
-already started being pretty useful - I've used it a couple times when
-I needed access to a physical device for a quick test. Composing tests
-for Appium's Safari is often very similar to writing Webdriver tests,
-and we've got plenty of experience doing that.
+In summary, this is quite a house of cards. But, after having gotten
+everything set up and just trying not to touch anything, it's already
+started being pretty useful - I've used it a couple times when I
+needed access to the physical device for a quick test, but I was not
+able to physically access the device. Composing tests for Appium's
+Safari is often very similar to writing Webdriver tests, and we've got
+plenty of experience doing that.
 
 As a bonus, you can set all of this up on a remote machine combined
 with a cool feature of Quicktime Player. Set up an unused OS X box on
 your network to accept Screen Sharing requests, connect an iOS device
 to it, start all the requisite servers on the box, and then open up
-Quicktime and start Recording a video via one of its File
-menus. Choose your iOS device from the dropdown list near the record
-button, and then you can see the screen of the device from a remote
-machine. Leave that quicktime window open, and then you don't need to
-be physically near your iOS device to observe the tests - it will be
-visible when you use Screen Sharing to connect to the OS X box!
+Quicktime and do `File -> New Mobie Recording`. Choose your iOS device
+from the dropdown list near the record button, and then you can see
+the screen of the device from a remote machine. Leave that quicktime
+window open, and then you don't need to be physically near your iOS
+device to observe the tests - it will be visible when you use Screen
+Sharing to connect to the OS X box!
 
 [^1]: For whatever reason (probably a very good reason), native apps
 do not respect the proxy settings on the device, and I'm not aware of
