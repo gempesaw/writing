@@ -12,7 +12,7 @@ method is only for inspecting Safari traffic[^1].
 So, you'll need a couple things to get this set up:
 
 - a real iOS device with which to test
-- an Apple Developer license - TODO TODO TODO
+- the proper iOS certificate and provisioning profile
 - Appium
 - A proxy capable of on-the-fly SSL MITM. I use [Browsermob Proxy]
   with its [perl bindings], but you can of course choose your
@@ -54,15 +54,15 @@ device will realize that the SSL traffic has been intercepted and
 refuse to load it.
 
 You need to install and trust the cert offered by your proxy. For
-Browsermob, this means you should go to the
+Browsermob, this means you should use your iOS device to go to the
 [browsermob cert on github] (the link is valid at time of writing, but
 in case the link 404s, you'll want to search that github repository
 for `ca-certificate-rsa.cer`), and then click the `Raw` button
 there. This will open up the `.cer` file in Safari, and Safari figures
 out that it should try to install it as a profile. You'll need to
 click Verify or Trust a few times during this process, and afterwards
-you can check what certs your device trusts in Settings -> TODO TODO
-TODO.
+you can check what certs your device trusts in `Settings -> General ->
+Profiles`.
 
 #### Turn on Web Inspector for your iOS's Safari
 
@@ -83,10 +83,10 @@ downloading the Browsermob binaries, that should simply be
     $ bin/browsermob-proxy
 
 At this point, you can set up the proxy settings on the real iOS
-device. Open up Settings -> General -> TODO TODO TODO -> Wireless, and
-then tap the connection you're using for the internet. This should
-open up the advanced settings for that connection, and at the bottom
-of that view you can set a Manual proxy.
+device. Open up Settings -> Wi-Fi, and then tap the connection you're
+using for the internet. This should open up the advanced settings for
+that connection, and at the bottom of that view you should choose to
+set a `Manual` proxy.
 
 The HOST will be the address of your proxy server, in my case wherever
 I'm running Browsermob Proxy. You can use ifconfig/ipconfig to get the
@@ -188,11 +188,12 @@ single worker, and all iOS jobs for a particular iOS device/OS X box
 pair go to the same queue, regardless of the job's source.
 
 Also, as mentioned, the server set up is a little precarious. Three
-apps need to be available, and with appropriately matching versions -
-across iOS upgrades, I have a big enough headache just getting Appium
-back into shape. Some of this can be alleviated with a docker set up
-or something like that, where the configuration different server apps
-can be locked down, but I haven't gotten that far.
+server app need to be available, and with appropriately matching
+versions - across iOS upgrades, I have a big enough headache just
+getting Appium back into shape. Some of this can be alleviated with a
+docker set up or something like that, where the configuration
+different server apps can be locked down, but I haven't gotten that
+far.
 
 Additionally, it's a bit of a hassle to have to interact with the
 physical device to set the port and accept the fake SSL cert. For
@@ -201,6 +202,15 @@ reset the configs to the proper state to alleviate silly humans trying
 to change things. But, for an actual physical iOS device, I don't know
 how to restore a configuration, and we can't prevent people from
 fooling with it accidentally, either.
+
+Although I didn't use the [PAC] option during my initial set up, it's
+definitely an option to write a PAC and use the `Auto` proxy option on
+the iOS device. However, I don't _think_ it's possible to have the
+`.pac` file pick a different proxy port depending on which device is
+making the request, so you'd have to have a separate `.pac` file for
+each iOS device, and configure each iOS device separately to point at
+the proper `.pac` file ... it's possible this could be useful, but I
+haven't tried it yet.
 
 Another point is that the proxy server you use needs to be able to do
 on the fly SSL MITM. There are definitely proxies that do this -
@@ -229,16 +239,16 @@ As a bonus, you can set all of this up on a remote machine combined
 with a cool feature of Quicktime Player. Set up an unused OS X box on
 your network to accept Screen Sharing requests, connect an iOS device
 to it, start all the requisite servers on the box, and then open up
-Quicktime and do `File -> New Mobie Recording`. Choose your iOS device
-from the dropdown list near the record button, and then you can see
-the screen of the device from a remote machine. Leave that quicktime
-window open, and then you don't need to be physically near your iOS
-device to observe the tests - it will be visible when you use Screen
-Sharing to connect to the OS X box!
+Quicktime and do `File -> New Mobile Recording`. Choose your iOS
+device from the dropdown list near the record button, and then you can
+see the screen of the device from a remote machine. Leave that
+quicktime window open, and then you don't need to be physically near
+your iOS device to observe the tests - it will be visible when you use
+Screen Sharing to connect to the OS X box!
 
 [^1]: For whatever reason (probably a very good reason), native apps
 do not respect the proxy settings on the device, and I'm not aware of
-any other way to route a native app's HTTP traffic through a proxy
+any way to route a native app's HTTP traffic through a proxy.
 
 [^2]: If, like me, you don't believe the proxy settings are saved,
 since you don't press a "Save" or "Confirm" button, and there's no UI
@@ -254,10 +264,10 @@ install and instrument it, and then SafariLauncher has a button that
 launches Safari, at which point the Safari WebViews are available for
 communication through IWDP.
 
-[^4]: Coincidentally, this also lets you use your
-OS X Safari's devTools on your iOS device (or simulator)'s instance of
-Safari, so you can see the console & network tabs and run javascript
-on your device (or simulator).
+[^4]: Coincidentally, this also lets you use your OS X Safari's
+devTools on your iOS device (or simulator)'s instance of Safari, so
+you can see the console & network tabs and run javascript on your
+device (or simulator).
 
 [^5]: I chose to create & delete the BMP proxy around each Appium
 session because this more closely mimics my existing BMP server
@@ -283,4 +293,6 @@ separate what traffic came from which test.
 [perl bindings]: https://metacpan.org/pod/Browsermob::Proxy
 [mitmproxy]:https://mitmproxy.org/
 [Appium hybrid app testing docs]: http://appium.io/slate/en/master/?ruby#automating-mobile-web-apps
-[browsermob cert on github]: https://github.com/lightbody/browsermob-proxy/blob/56a0ba5726a6339b2f6284db67f4cf557fca3a6e/browsermob-core/src/main/resources/sslSupport/ca-certificate-rsa.cer
+[browsermob cert on github]:
+https://github.com/lightbody/browsermob-proxy/blob/56a0ba5726a6339b2f6284db67f4cf557fca3a6e/browsermob-core/src/main/resources/sslSupport/ca-certificate-rsa.cer
+[PAC]: https://en.wikipedia.org/wiki/Proxy_auto-config
