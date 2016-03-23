@@ -14,9 +14,9 @@ So, you'll need a couple things to get this set up:
 - a real iOS device with which to test
 - the proper iOS certificate and provisioning profile
 - Appium
-- A proxy capable of on-the-fly SSL MITM. I use [Browsermob Proxy]
-  with its [perl bindings], but you can of course choose your
-  own. [mitmproxy] is a popular Python proxy that would also work.
+- A proxy capable of on-the-fly SSL MITM. I use [Browsermob Proxy][]
+  with its [perl bindings][], but you can of course choose your
+  own. [mitmproxy][] is a popular Python proxy that would also work.
 
 [[MORE]]
 
@@ -25,17 +25,20 @@ So, you'll need a couple things to get this set up:
 #### Get permission to install your own apps on your iOS device
 
 There are pretty good instructions on how to do this in the
-[Appium hybrid app testing docs], copied here for clarity, since it's
-difficult to link to this specific section of the docs:
+[Appium hybrid app testing docs][], copied here for clarity, since
+it's difficult to link to this specific section of the docs:
 
 > Step 1: Create a new App Id and select the WildCard App ID option and set it to “*”
+>
 > Step 2: Create a new Development Profile and for App Id select the one created in step 1.
+>
 > Step 3: Select your certificate(s) and device(s) and click next.
+>
 > Step 4: Set the profile name and generate the profile.
 
-Note that you will need to pay $99 to do this in the Apple Developer
-center. At this point, download the provisioning profile and tell
-XCode about it by opening the provisioning profile in XCode.
+Note that you will need to pay $99 to sign up to do this in the Apple
+Developer center. At this point, download the provisioning profile you
+created and tell XCode about it by opening the profile in XCode.
 
 The idea here is to indicate to Apple that we are an iOS developer, so
 that they let us install native applications on our real device,
@@ -49,13 +52,13 @@ any.
 
 #### Instruct your device to trust your MITM
 
-As expected, when you try to MITM your own SSL traffic, your iOS
-device will realize that the SSL traffic has been intercepted and
-refuse to load it.
+As expected, if you try to MITM your own SSL traffic, your iOS device
+will realize that the SSL traffic has been intercepted and refuse to
+load it.
 
 You need to install and trust the cert offered by your proxy. For
 Browsermob, this means you should use your iOS device to go to the
-[browsermob cert on github] (the link is valid at time of writing, but
+[browsermob cert on github][] (the link is valid at time of writing, but
 in case the link 404s, you'll want to search that github repository
 for `ca-certificate-rsa.cer`), and then click the `Raw` button
 there. This will open up the `.cer` file in Safari, and Safari figures
@@ -203,7 +206,7 @@ to change things. But, for an actual physical iOS device, I don't know
 how to restore a configuration, and we can't prevent people from
 fooling with it accidentally, either.
 
-Although I didn't use the [PAC] option during my initial set up, it's
+Although I didn't use the [PAC][] option during my initial set up, it's
 definitely an option to write a PAC and use the `Auto` proxy option on
 the iOS device. However, I don't _think_ it's possible to have the
 `.pac` file pick a different proxy port depending on which device is
