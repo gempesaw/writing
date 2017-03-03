@@ -22,7 +22,7 @@ So, you'll need a couple things to get this set up:
 
 ## Preparing the real iOS device
 
-#### Get permission to install your own apps on your iOS device
+### Get permission to install your own apps on your iOS device
 
 There are pretty good instructions on how to do this in the
 [Appium hybrid app testing docs][], copied here for clarity, since
@@ -50,7 +50,7 @@ At some point before trying to run your test, you'll need to connect
 the iOS device to the computer via USB cable; now's as good a time as
 any.
 
-#### Instruct your device to trust your MITM
+### Instruct your device to trust your MITM
 
 As expected, if you try to MITM your own SSL traffic, your iOS device
 will realize that the SSL traffic has been intercepted and refuse to
@@ -58,23 +58,23 @@ load it.
 
 You need to install and trust the cert offered by your proxy. For
 Browsermob, this means you should use your iOS device to go to the
-[browsermob cert on github][] (the link is valid at time of writing, but
-in case the link 404s, you'll want to search that github repository
-for `ca-certificate-rsa.cer`), and then click the `Raw` button
-there. This will open up the `.cer` file in Safari, and Safari figures
-out that it should try to install it as a profile. You'll need to
-click Verify or Trust a few times during this process, and afterwards
-you can check what certs your device trusts in `Settings -> General ->
-Profiles`.
+[browsermob cert on github][] (the link is valid at time of writing,
+but in case the link 404s, you'll want to search that github
+repository for `ca-certificate-rsa.cer`), and then click the `Raw`
+button there. This will open up the `.cer` file in Safari, and Safari
+figures out that it should try to install it as a profile. You'll need
+to click Verify or Trust a few times during this process, and
+afterwards you can check what certs your device trusts in `Settings ->
+General -> Profiles`.
 
-#### Turn on Web Inspector for your iOS's Safari
+### Turn on Web Inspector for your iOS's Safari
 
 This one is pretty straightforward - go into `Settings -> Safari ->
 Advanced -> Web Inspector` and make sure it's turned on[^4].
 
 ## Starting servers
 
-#### Proxy Server
+### Proxy Server
 
 As mentioned, I use Browsermob Proxy to capture the network traffic
 into a HAR. You are free to use any proxy setup you want, noting that
@@ -106,7 +106,7 @@ device, and then press back in the top left to save the settings[^2].
 Putting in the proxy settings should end up breaking the internet on
 your iOS device, since we haven't created the proxy yet.
 
-#### ios_webkit_debug_proxy
+### ios_webkit_debug_proxy
 
 You'll also need to download and run another process: the
 `ios_webkit_debug_proxy`. This is _not_ the same as the above proxy
@@ -206,14 +206,14 @@ to change things. But, for an actual physical iOS device, I don't know
 how to restore a configuration, and we can't prevent people from
 fooling with it accidentally, either.
 
-Although I didn't use the [PAC][] option during my initial set up, it's
-definitely an option to write a PAC and use the `Auto` proxy option on
-the iOS device. However, I don't _think_ it's possible to have the
-`.pac` file pick a different proxy port depending on which device is
-making the request, so you'd have to have a separate `.pac` file for
-each iOS device, and configure each iOS device separately to point at
-the proper `.pac` file ... it's possible this could be useful, but I
-haven't tried it yet.
+Although I didn't use the [PAC][] option during my initial set up,
+it's definitely an option to write a PAC and use the `Auto` proxy
+option on the iOS device. However, I don't _think_ it's possible to
+have the `.pac` file pick a different proxy port depending on which
+device is making the request, so you'd have to have a separate `.pac`
+file for each iOS device, and configure each iOS device separately to
+point at the proper `.pac` file ... it's possible this could be
+useful, but I haven't tried it yet.
 
 Another point is that the proxy server you use needs to be able to do
 on the fly SSL MITM. There are definitely proxies that do this -
