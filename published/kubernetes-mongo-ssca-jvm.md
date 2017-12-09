@@ -1,6 +1,6 @@
 # Connecting to Mongo with a self signed CA on a JVM in Kubernetes
 
-At work, we're creating an internal platform on top of Kubernetes for
+At $WORK, we're creating an internal platform on top of Kubernetes for
 developers to deploy their apps. Our Ops people have graciously
 provided us with Mongo clusters that all use certificates signed by a
 self-signed certificate authority. So, all our clients need to know
@@ -12,7 +12,7 @@ But, things are a little more complicated for Java or Scala apps,
 because configuration of certificate authorities is done at the JVM
 level, not at the code level. And for an extra level of fun, we want
 to do it in Kubernetes, transparently to our developers, so they don't
-have to worry about it.
+have to worry about it on their own.
 
 ### err, wha? telling the JVM about our CA
 
@@ -56,6 +56,16 @@ $ openssl x509 -in ssca.cer -text -noout
 //             X509v3 Key Usage: ...
 //             X509v3 Basic Constraints: ...
 ```
+
+Another useful command was examining the keystore before and after we
+imported our self signed CA:
+
+```
+$ keytool -list -keystore /path/to/keystore/file
+```
+
+as you can look for your self-signed CA in there to see if you ran the
+command correctly.
 
 Anyway, once you've created a keystore for the JVM, the next step is
 to set the appropriate system properties, again as out lined in the [docs][]:
