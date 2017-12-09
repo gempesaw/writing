@@ -17,7 +17,7 @@ spec:
       initContainers:
       - name: copy
         image: openjdk:8u121-alpine
-        command: [ cp, /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts, /ssca/keystore/cacerts ]
+        command: [ cp, /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts, /ssca/truststore/cacerts ]
         volumeMounts:
         - name: truststore
           mountPath: /ssca/truststore
