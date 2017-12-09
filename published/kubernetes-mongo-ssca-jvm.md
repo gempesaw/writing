@@ -158,7 +158,12 @@ spec:
 ```
 
 Mount the `truststore` volume in the `copy` initContainer, grab the
-file cacerts file, and put it in our `truststore` volume.
+file cacerts file, and put it in our `truststore` volume. Note that
+while we'd like to use $JAVA_HOME in the `copy` initContainer, I
+couldn't figure out how to use environment variables in the
+command. Also, since we're using a tagged docker image, there is a
+pretty good guarantee that the filepath shouldn't change underneath
+us, even though it's hardcoded.
 
 Next, the import step! We need to mount the self-signed CA into this
 container as well. Run the `keytool` command as described above,
