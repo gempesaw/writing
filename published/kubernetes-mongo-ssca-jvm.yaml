@@ -1,0 +1,52 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: jvm-mongo-ssca
+  name: jvm-mongo-ssca
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jvm-mongo-ssca
+  template:
+    metadata:
+      labels:
+        app: jvm-mongo-ssca
+    spec:
+      initContainers:
+      - name: copy
+        image: openjdk:8u121-alpine
+        command: [ cp, /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts, /ssca/keystore/cacerts ]
+        volumeMounts:
+        - name: truststore
+          mountPath: /ssca/truststore
+      - name: keytool
+        image: openjdk:8u121-alpine
+        command: [ keytool, -importcert, -v, -noprompt, -trustcacerts, -file, /ssca/ca/ca.crt, -keystore, /ssca/truststore/cacerts, -storepass, changeit ]
+        volumeMounts:
+        - name: truststore
+          mountPath: /ssca/truststore
+        - name: self-signed-ca
+          mountPath: /ssca/ca
+      containers:
+      - image: openjdk:8u121-alpine
+        # for debugging
+        # command: [ tail, -f, /etc/hosts ]
+        env:
+          # make sure not to overwrite this when composing the yaml
+        - name: JAVA_OPTS
+          value: -Djavax.net.ssl.trustStore=/security/certs/cacerts
+        imagePullPolicy: Always
+        name: jvm-mongo-ssca
+        volumeMounts:
+        - name: truststore
+          mountPath: /ssca/truststore
+        - name: self-signed-ca
+          mountPath: /ssca/ca
+      volumes:
+      - name: truststore
+        emptyDir: {}
+      - name: self-signed-ca
+        secret:
+          secretName: self-signed-ca
