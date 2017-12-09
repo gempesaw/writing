@@ -132,7 +132,7 @@ spec:
       initContainers:
       - name: copy
         image: openjdk:8u121-alpine
-        command: [ cp, /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts, /ssca/keystore/cacerts ]
+        command: [ cp, /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts, /ssca/truststore/cacerts ]
         volumeMounts:
         - name: truststore
           mountPath: /ssca/truststore
@@ -141,18 +141,18 @@ spec:
         image: openjdk:8u121-alpine
         command: [ keytool, -importcert, -v, -noprompt, -trustcacerts, -file, /ssca/ca/ca.crt, -keystore, /ssca/truststore/cacerts, -storepass, changeit ]
         volumeMounts:
-        - name: keystore
+        - name: truststore
           mountPath: /ssca/truststore
         - name: self-signed-ca
           mountPath: /ssca/ca
 ```
 
 Mount the `truststore` volume in the `copy` initContainer, grab the
-file cacerts file, and put it in our `keystore` volume.
+file cacerts file, and put it in our `truststore` volume.
 
 Next, the import step! We need to mount the self-signed CA into this
 container as well. Run the `keytool` command as described above,
-referencing our copied `cacerts` file in our `keystore` volume and
+referencing our copied `cacerts` file in our `truststore` volume and
 passing in our ssCA.
 
 Two things to note here: the `-noprompt` argument to `keytool` is
