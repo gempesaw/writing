@@ -166,7 +166,7 @@ directory. (...probably, I didn't actually check)
 
 The final step is telling the JVM where our new and improved trust
 store is. My first idea was just to add `args` to the manifest and set
-the system property in there, but if the Dockerfile ENTRYPOINT is
+the system property in there, but if the Dockerfile `ENTRYPOINT` is
 something like
 
 ```
@@ -180,7 +180,7 @@ java -jar whatever.jar -Djavax.net.ssl.trustStore=...
 ```
 
 which would pass the option to the jar instead of setting a system
-property. Plus, that wouldn't work at all if the ENTRYPOINT was a
+property. Plus, that wouldn't work at all if the `ENTRYPOINT` was a
 shell script or something that wasn't expecting arguments.
 
 After some searching, we found the `JAVA_OPTS` and `JAVA_TOOL_OPTIONS`
