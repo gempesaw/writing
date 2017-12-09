@@ -212,9 +212,10 @@ sure that we append to the existing value instead of overwriting it.
 Uh, so that got kind of long, but the overall idea is more or less
 straightforward. Add our self-signed CA to the existing cacerts file,
 and tell the JVM to use it as the truststore. (Note that it's the
-trustStore option you want, not the keyStore!). The entire manifest
-all together [is also available][manifest], if that sounds useful...
+trustStore option you want, not the keyStore!). The entire Deployment
+manifest all together [is also available][manifest], if that sounds
+useful...
 
 [docs]: http://mongodb.github.io/mongo-java-driver/3.6/driver/tutorials/ssl/#jvm-system-properties-for-tls-ssl
-[manifest]: https://github.com/gempesaw/writing/published/kubernetes-mongo-ssca-jvm.yaml
+[manifest]: https://github.com/gempesaw/writing/blob/master/published/kubernetes-mongo-ssca-jvm.yaml
 [javaOpts]: https://stackoverflow.com/questions/28327620/difference-between-java-options-java-tool-options-and-java-opts
