@@ -198,9 +198,10 @@ which would pass the option to the jar instead of setting a system
 property. Plus, that wouldn't work at all if the `ENTRYPOINT` was a
 shell script or something that wasn't expecting arguments.
 
-After some searching, we found the `JAVA_OPTS` and `JAVA_TOOL_OPTIONS`
-[environment variables][javaOpts]. We can append our trustStore to the existing
-value of these env vars, and we'd be good to go!
+After some searching, StackOverflow taught us about the `JAVA_OPTS`
+and `JAVA_TOOL_OPTIONS` [environment variables][javaOpts]. We can
+append our trustStore to the existing value of these env vars, and
+we'd be good to go!
 
 ```
 spec:
