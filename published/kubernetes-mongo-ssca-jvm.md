@@ -207,7 +207,7 @@ spec:
   template:
     spec:
       containers:
-      - image: nexus.admin.sharecare.com/mongo-selfsignedcert:latest
+      - image: your-app-image
         env:
           # make sure not to overwrite this when composing the yaml
         - name: JAVA_OPTS
