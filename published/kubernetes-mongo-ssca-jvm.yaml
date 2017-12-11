@@ -35,7 +35,7 @@ spec:
         # command: [ tail, -f, /etc/hosts ]
         env:
           # make sure not to overwrite this when composing the yaml
-        - name: JAVA_OPTS
+        - name: _JAVA_OPTIONS
           value: -Djavax.net.ssl.trustStore=/security/certs/cacerts
         imagePullPolicy: Always
         name: jvm-mongo-ssca
