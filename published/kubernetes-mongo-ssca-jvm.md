@@ -198,7 +198,7 @@ which would pass the option to the jar instead of setting a system
 property. Plus, that wouldn't work at all if the `ENTRYPOINT` was a
 shell script or something that wasn't expecting arguments.
 
-After some searching, StackOverflow taught us about the `JAVA_OPTS`
+After some searching, StackOverflow taught us about the `_JAVA_OPTIONS`
 and `JAVA_TOOL_OPTIONS` [environment variables][javaOpts]. We can
 append our trustStore to the existing value of these env vars, and
 we'd be good to go!
@@ -211,7 +211,7 @@ spec:
       - image: your-app-image
         env:
           # make sure not to overwrite this when composing the yaml
-        - name: JAVA_OPTS
+        - name: _JAVA_OPTIONS
           value: -Djavax.net.ssl.trustStore=/ssca/truststore/cacerts
         volumeMounts:
         - name: truststore
@@ -220,7 +220,7 @@ spec:
 ```
 
 In our app that we use to construct the manifests, we check if the
-developer is already trying to set JAVA_OPTS to something, and make
+developer is already trying to set _JAVA_OPTIONS to something, and make
 sure that we append to the existing value instead of overwriting it.
 
 ### a conclusion of sorts
