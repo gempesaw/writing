@@ -149,7 +149,9 @@ spec:
 
       - name: import
         image: openjdk:8u121-alpine
-        command: [ keytool, -importcert, -v, -noprompt, -trustcacerts, -file, /ssca/ca/ca.crt, -keystore, /ssca/truststore/cacerts, -storepass, changeit ]
+        command: [ keytool, -importcert, -v, -noprompt, -trustcacerts,
+                   -file, /ssca/ca/ca.crt, -keystore, /ssca/truststore/cacerts,
+                   -storepass, changeit ]
         volumeMounts:
         - name: truststore
           mountPath: /ssca/truststore
