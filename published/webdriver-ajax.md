@@ -1,4 +1,8 @@
-# Waiting for a page to load in Selenium::Remote::Driver with Selenium::Waiter
+---
+title: "Waiting for a page to load in Selenium::Remote::Driver with Selenium::Waiter"
+date: 2015-04-21
+tags: ["asynchronicity", "asynchronous", "selenium-remote-driver", "webdriver", "webdriver tutorial", "perl", "selenium firefox", "wait_until", "selenium waiter", "perl-webdriver-tutorial"]
+---
 
 One of the first problems we come up against when trying to use
 Webdriver to automate a web application is handling the asynchronicity

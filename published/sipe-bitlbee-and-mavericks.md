@@ -1,3 +1,9 @@
+---
+title: "Using SIPE through Bitlbee in Emacs on OS X Mavericks"
+date: 2014-12-10
+tags: ["bitlbee", "sipe", "os x", "mavericks", "emacs", "circe.el", "irc", "lync", "alternative", "jabber", "work chat", "ugh"]
+---
+
 I like using Emacs as often as possible. Our work server was
 previously jabber, so I was using the excellent `jabber.el` to chat
 with my coworkers. We're switching over to Microsft Lync, so it

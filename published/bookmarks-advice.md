@@ -1,3 +1,9 @@
+---
+title: "automatically save your bookmarks file"
+date: 2013-03-16
+tags: ["elisp", "emacs", "bookmarks", "file", "delete", "version control", "bookmarks-default-file", "bookmark-save", "advice", "convenience", "planet emacsen", "me", "writing", "self"]
+---
+
 Bookmarks in Emacs are very, very useful for getting to places you frequently go. If you don't use them to help you navigate, you should consider it! For whatever reason, bookmarks are saved in an external file, not in an Emacs variable. I can't count the number of times I added a bookmark, closed Emacs, and inadvertently deleted it. Even with version control, I still kept losing bookmarks because I kept forgetting to save.
 
     (setq bookmarks-default-file "~/.emacs.d/bookmarks")

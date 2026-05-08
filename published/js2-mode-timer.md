@@ -1,3 +1,9 @@
+---
+title: "js2-mode timer errors: timer-set-function: Wrong type argument: timerp"
+date: 2013-09-25
+tags: ["elisp", "on topic", "emacs", "js2-mode", "js3-mode", "mooz", "github", "timer-set-function", "timer errors", "byte-recompile-directory", "me", "writing", "self"]
+---
+
 I started seeing the following timer error in [mooz's `js2-mode`][1],
 the actively maintained fork of Steve Yegge's `js2-mode`. This would
 happen whenever I changed any javascript code, and the mode wouldn't

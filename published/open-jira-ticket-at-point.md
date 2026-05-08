@@ -1,3 +1,9 @@
+---
+title: "convenience fns: open-jira-ticket-at-point"
+date: 2014-04-10
+tags: ["thing-at-point", "thing-at-pt", "emacs", "planet emacsen", "jira", "open-jira-ticket-at-point", "convenience", "elisp", "me", "writing", "self"]
+---
+
 Working with JIRA, there are a bunch of instances where I see a JIRA
 ticket inside of Emacs and I want to open it in Chrome - they come up
 often in jabber chatrooms, there's tons of them in emails, etc. No

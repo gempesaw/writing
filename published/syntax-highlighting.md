@@ -1,3 +1,9 @@
+---
+title: "syntax highlighting this tumblr blog"
+date: 2013-03-14
+tags: ["blog", "tumblr", "syntax", "highlighting", "lisp", "highlight.js", "javascript", "css", "link", "script", "language", "autodetection", "awesome", "include", "highlight.pack.js", "github", "pages", "code", "class", "pre", "setup", "install", "customize", "package", "me", "writing", "self"]
+---
+
 Syntax highlighting on tumblr is a completely manual effort, as far as I'm aware. I don't know of any built-in highlighting or any certified methods that they advertise. I did some research and tried a couple different highlighters - some of them are out of date, some of them don't support lisp, and some of them are more complicated. I was looking for a decently recent one that had built-in lisp support and would be easiest to hook into a tumblr set up. I settled on [highlight.js](http://softwaremaniacs.org/soft/highlight/en/), which has helpful documentation on its own website and everything.
 
 Because I needed somewhere to host the files, I got set up with Github Pages and put my versions of the highlight.pack.js file in there. That took a while, but once it was sorted, the rest was pretty straight forward. I just need to select and add a CSS stylesheet with the colors of my choosing, add one script tag to source the js file that does the work, and then call javascript command to do all the highlighting. So, the following lines have been added to my tumblr theme:

@@ -1,3 +1,9 @@
+---
+title: "How do you test a big ReST API binding?"
+date: 2014-04-03
+tags: ["perl", "cpan", "cpanm", "selenium::remote::driver", "srd", "selenium", "remote", "webdriver", "test", "api", "rest", "me", "writing", "self"]
+---
+
 I recently became the maintainer of [Selenium::Remote::Driver][srd],
 which is the Perl bindings to the Selenium Webdriver API. I just
 [released version 0.18 to the CPAN][cpan] and hopefully got the tests

@@ -1,3 +1,9 @@
+---
+title: "drag'n'drop with Perl, Webdriver, and Selenium::Remote::Driver"
+date: 2014-11-23
+tags: ["drag and drop", "dnd", "webdriver", "perl", "selenium", "selenium remote driver", "srd", "dave haeffner", "elemental selenium", "rob correia", "html5", "workaround", "perl webdriver tutorial"]
+---
+
 <small>(This post is direct language translation of
 [ep 39](http://elementalselenium.com/tips/39-drag-and-drop) of
 [Elemental Selenium](http://elementalselenium.com/), Dave Haeffner's

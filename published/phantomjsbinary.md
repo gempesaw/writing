@@ -1,3 +1,9 @@
+---
+title: "Using a command line argument for PhantomJS and the Selenium Server Standalone"
+date: 2013-08-19
+tags: ["phantomjs", "binary", "path", "phantomjs.binary.path", "selenium server standalone", "selenium", "server", "standalone", "2.35.0", "ie", "chrome", "driver", "automation", "browser", "testing", "qa", "software", "webdriver", "me", "writing", "self", "perl webdriver tutorial"]
+---
+
 tl; dr - `-Dphantomjs.binary.path=/path/to/your/phantomjs`
 
 [Selenium WebDriver](https://code.google.com/p/selenium/) is a

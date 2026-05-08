@@ -1,3 +1,9 @@
+---
+title: "Imitating live reload in Emacs for Perl (or any) project :)"
+date: 2015-03-18
+tags: ["emacs", "elisp", "github", "save-buffer", "auto", "recompile", "auto-re-compile", "compilation", "buffer", "planet emacsen"]
+---
+
 One of my favorite parts about my frontend JS workflow is using Live
 Reload with Grunt/Gulp. Saving a few keystrokes a couple times a
 minute is pretty great, especially if I can stay on the home

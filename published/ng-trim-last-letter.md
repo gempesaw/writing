@@ -1,4 +1,8 @@
-# Trimming and down-casing strings with AngularJS Filters: lowercase and limitTo
+---
+title: "Trimming and down-casing strings with AngularJS Filters: lowercase and limitTo"
+date: 2014-05-04
+tags: ["angularjs", "trim", "downcase", "lowercase", "filter", "limitto", "expression", "placeholder", "input", "web dev", "me", "writing", "self"]
+---
 
 I've got a small `ng-repeat` over this array:
 

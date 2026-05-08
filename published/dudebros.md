@@ -1,3 +1,9 @@
+---
+title: "On dudebros and sexism in games"
+date: 2013-06-15
+tags: ["rant"]
+---
+
 > I despise it when people take a small sampling of truly sexist games
   (which I will readily admit exist, and some are legitimately good
   games despite the fact), but the same people choose to ignore the

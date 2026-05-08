@@ -1,3 +1,9 @@
+---
+title: "Getting started with Ionic and Appium for a new android app"
+date: 2014-04-25
+tags: ["ionic", "ionicframework", "angularjs", "npm", "appium", "android", "sdk", "breakside", "desired capabilities", "webdriver", "selenium", "remote", "driver", "perl", "maybe i'm going overboard here", "me", "writing", "self", "perl-appium-tutorial", "perl webdriver tutorial"]
+---
+
 [Ionic][] enables you to author mobile apps using the powerful
 [AngularJS][] javascript framework. [Appium][] is a cross-platform
 mobile testing tool that lets you run your app on emulators _and_ real

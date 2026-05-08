@@ -1,3 +1,9 @@
+---
+title: "On the E3 rape joke"
+date: 2013-06-12
+tags: ["rant"]
+---
+
 There was a rape comment [during Microsoft's E3 demo](http://www.youtube.com/watch?feature=player_embedded&v=P75YQHFnyKY). Many people are arguing that it wasn't a rape comment, mostly consisting of "I didn't parse it as a rape joke because (it's a stretch|I can think of something else it might refer to|I'm not oversensitive|.*), so it's not and stop complaining about it." It's narcissistic, misogynistic, and ignorant to assert _to other people_ (!!!! who have entirely different experiences!) that it's equivocally not a rape joke and to try to stop conversation about it.
 
 Regardless of anyone's dissenting opinion, the fact is that many people interpeted the comment as a reference to rape. This fact along with the context (Microsoft presenting to a huge audience practically guaranteed to include rapists and rape survivors in an industry plagued by gender issues) should be enough to make the entire situation reprehensible - why should it matter that there are some people who aren't offended, and why do they need to inject themselves into the conversation? The entitled attitude of "I'm not offended so _you_ shouldn't be either" is infuriating.

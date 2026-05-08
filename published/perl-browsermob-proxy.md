@@ -1,3 +1,9 @@
+---
+title: "Playing with the new Perl bindings for the BrowserMob Proxy"
+date: 2014-05-24
+tags: ["browsermob proxy", "bmp", "patrick lightbody", "selenium remote driver", "srd", "perl", "test omniture", "proxy", "cpan", "me", "writing", "self", "perl webdriver tutorial"]
+---
+
 [Browsermob Proxy][bmp] is an open source project that
 [Patrick Lightbody][pl] split off from the main Selenium project. It
 works really well in tandem with Selenium Webdriver, but it was

@@ -1,4 +1,8 @@
-# Running perl's Test::More tests in parallel on OS X
+---
+title: "Running perl's Test::More tests in parallel on OS X"
+date: 2015-02-21
+tags: ["perl", "test::more", "test-more", "test-parallelsubtest", "background", "webdriver", "e2e", "integration tests", "qa", "software testing"]
+---
 
 Integration tests and e2e tests are very useful when developing apps,
 but unlike unit tests it's harder to keep them fast and snappy. In my

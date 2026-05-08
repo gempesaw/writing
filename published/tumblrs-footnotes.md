@@ -1,4 +1,8 @@
-# Stopping footnotes here from opening in a new tab
+---
+title: "Stopping footnotes here from opening in a new tab"
+date: 2015-09-05
+tags: ["tumblr", "meta tumblr", "footnotes", "new tab", "_blank", "target", "markdown", "markdown extra"]
+---
 
 Tumblr's markdown formatting mode somewhat secretly supports
 footnotes. But, it seems like my settings or my theme or something

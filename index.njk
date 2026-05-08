@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: ""
+pagination:
+  data: collections.posts
+  size: 5
+  alias: page_posts
+permalink: "{% if pagination.pageNumber == 0 %}/{% else %}/page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+<ul class="post-list">
+{% for post in page_posts %}
+  <li class="post-list-item">
+    <h2 class="post-list-title">
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </h2>
+    <time class="post-list-date" datetime="{{ post.date | htmlDate }}">{{ post.date | readableDate }}</time>
+    <div class="post-list-excerpt">
+      {{ post.templateContent | excerptOf | safe }}
+    </div>
+    <p class="post-list-more"><a href="{{ post.url }}">read more &rarr;</a></p>
+  </li>
+{% endfor %}
+</ul>
+
+{% if pagination.pages.length > 1 %}
+<nav class="pagination">
+  {% if pagination.previousPageHref %}
+    <a class="pagination-prev" href="{{ pagination.previousPageHref }}">&larr; newer</a>
+  {% else %}
+    <span class="pagination-prev disabled">&larr; newer</span>
+  {% endif %}
+  <span class="pagination-status">page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</span>
+  {% if pagination.nextPageHref %}
+    <a class="pagination-next" href="{{ pagination.nextPageHref }}">older &rarr;</a>
+  {% else %}
+    <span class="pagination-next disabled">older &rarr;</span>
+  {% endif %}
+</nav>
+{% endif %}

@@ -1,3 +1,9 @@
+---
+title: "An unexpected dump_config error in Dist::Zilla projects using [TravisYML]"
+date: 2014-04-20
+tags: ["dist::zilla", "dzil", "dzilla", "travisci", "travisyml", "debug", "build box", "perl", "testing", "qa", "me", "writing", "self"]
+---
+
 ### 1. motivation
 
 There's been a curious `dump_config` build error in my Dist::Zilla

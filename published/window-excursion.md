@@ -1,3 +1,9 @@
+---
+title: "save-window-excursion: protect your window layout"
+date: 2013-03-22
+tags: ["save-window-excursion", "emacs", "elisp", "latex-mode", "tex-file", "latex-mode-hook", "add-hook", "hook", "winner-mode", "planet emacsen", "me", "writing", "self"]
+---
+
 Sometimes I've got my window layout set up just right, and then a command like `tex-file` stomps all over my hard work. `winner-mode` helps with one off cases, but `tex-file` always pops up a new window for the buffer containing the tex compilation. I usually don't care about the compilation, especially since it usually doesn't fail, so let's stop popping up that window:
 
     (add-hook 'latex-mode-hook

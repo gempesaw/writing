@@ -1,4 +1,8 @@
-# Connecting to Mongo with a self signed CA on a JVM in Kubernetes
+---
+title: "Connecting to Mongo with a self signed CA on a JVM in Kubernetes"
+date: 2017-12-10
+tags: ["kubernetes", "mongo", "jvm", "ssca", "self-signed", "certificate-authority", "self-signed-ca"]
+---
 
 At $WORK, we're creating an internal platform on top of Kubernetes for
 developers to deploy their apps. Our Ops people have graciously

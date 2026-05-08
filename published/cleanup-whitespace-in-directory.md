@@ -1,4 +1,8 @@
-# Cleaning up whitespace in directories with some elisp
+---
+title: "Cleaning up whitespace in directories with some elisp"
+date: 2014-05-05
+tags: ["planet emacsen", "emacs", "elisp", "elisp solves problems", "cleanup-buffer", "on the shoulders of giants", "cleanup-in-directory", "match", "recursive", "defun", "me", "writing", "self", "cleanup", "whitespace"]
+---
 
 I had a project with an outdated indentation convention. Present-me
 recently decided to change bracket conventions from the way past-me

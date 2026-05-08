@@ -1,3 +1,9 @@
+---
+title: "Fixing a laggy compilation buffer"
+date: 2015-09-25
+tags: ["emacs", "elisp", "compilation", "buffer", "compile.el", "compilation.el", "compilation-mode", "compilation-error-regexp-alist", "gmane"]
+---
+
 I use Emacs compilation mode to execute most of my scripts - it has a
 lot of nice built in things, including error highlighting with
 automatic navigation. But, I've noticed that with really long lines,

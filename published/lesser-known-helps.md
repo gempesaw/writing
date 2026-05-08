@@ -1,3 +1,9 @@
+---
+title: "Lesser known Emacs helps"
+date: 2013-06-17
+tags: ["emacs", "elisp", "help", "c-h c", "where-is", "describe-key-briefly", "c-h w", "planet emacsen", "me", "writing", "self"]
+---
+
 I recently came across a pair of lesser known (for me) help
 keybindings: `C-h c` and `C-h w`. I ran through the tutorial on a
 flight because I haven't yet and I've been meaning to, and that's

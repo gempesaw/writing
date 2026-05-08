@@ -1,3 +1,9 @@
+---
+title: "I don't know anything about SQL Server 2008 R2"
+date: 2013-09-18
+tags: ["unrelated", "sql server 2008 r2", "ssms", "sql server management studio", "windows", "ugh", "gross", "sa", "disabled", "authentication", "windows authentication mode", "me", "writing", "self"]
+---
+
 One of my work assignments depended on an install of SQL Server 2008 R2. I needed to use the `sa` account to log in and do some database-y things during latter parts of the install, but I didn't know the password for the `sa` account, and I didn't know how to find it or change it. According to Google, [SQL Server Management Studio](http://www.microsoft.com/en-us/download/details.aspx?id=7593) is what I need to do admin things. At this point, I found out that the `sa` account was actually disabled by default in new installations of 08 R2 as a security precaution, so my task was to get admin access, enable the `sa` account, and change its password.
 
 There are apparently two methods of login for SQL Server 2008: Windows Authentication mode, wherein you use the same credentials that you do for logging in to the machine itself, and SQL Server and Windows Authentication mode. The latter allows us to use SQL logins alongside of the Windows credentials. Now, enabling the `sa` account wouldn't have done anything on its own if the server authentication mode was Windows Authentication only, which would have prevented me from logging into the `sa` account. So.

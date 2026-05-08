@@ -1,3 +1,9 @@
+---
+title: "My own reference for flashing new android without losing root or user data"
+date: 2015-08-04
+tags: ["android", "self", "reference", "nexus 6", "shamu", "5.1.1", "lyz28e", "9ea32a7ff1751afa2a16214ac23ef000"]
+---
+
 Humm, so my nexus 6 has a persistent notification about wanting me to
 upgrade to 5.1.1. I was lazy this time and didn't bother doing it at
 the end of May when the stock images came out, but my phone doesn't

@@ -1,3 +1,8 @@
+---
+title: "About"
+date: 2013-01-01
+---
+
 ![ultimate photo](whee)
 
 My name is Daniel Gempesaw, and I am a QA software developer for [Sharecare](http://www.sharecare.com). I create tools to improve our QA process, including an in-house browser automation suite based on Webdriver. I use Emacs for [as](http://elisp-solves-problems.tumblr.com/tagged/jabber) [many](http://elisp-solves-problems.tumblr.com/tagged/mu4e) [things](http://elisp-solves-problems.tumblr.com/tagged/tumblesocks) [as](http://elisp-solves-problems.tumblr.com/tagged/ssh) [I](http://elisp-solves-problems.tumblr.com/tagged/unzip) [can](http://elisp-solves-problems.tumblr.com/tagged/circe); recently I've been writing mostly Scala, Perl, elisp, and PHP in it. Anything Emacs, software, or web-dev related is on [elisp-solves-problems](http://elisp-solves-problems.tumblr.com): so far it's mainly explanations and snippets of my [.emacs files](http://github.com/gempesaw/dotemacs).

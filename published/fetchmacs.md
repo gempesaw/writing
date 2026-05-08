@@ -1,3 +1,9 @@
+---
+title: "fetchnotes and emacs, together at last"
+date: 2013-03-19
+tags: ["fetchmacs", "fetchnotes", "emacs", "major-mode", "fetchmacs-user-email", "fetchmacs-mode", "fetchmacs-refresh", "magit", "first major mode", "load-file", "planet emacsen", "me", "writing", "self"]
+---
+
 [Fetchnotes](http://www.fetchnotes.com) is yet another todo-list/note taking app. I like their service because everything is just plain text, so it's very straightforward from a usage standpoint. I don't have to worry about formatting or saving a url or just part of a page or anything that I'm not concerned about; it's just text! Additionally, they use tags to organize your notes; I have an affinity for tagging/labelling things excessively with the assumption that future me will be able to think of at least one of the tags past me used.
 
 They've got a web interface and a nice responsive mobile view, and they also have an iOS app, an iPad app, and an Android app, which means that I can CRUD notes from any device I've got; since it's just text, it's easy on every device. As is the Emacs way, a thing worth doing is worth doing from inside Emacs. I've written [fetchmacs](https://github.com/gempesaw/fetchmacs.git), an Emacs major-mode to interact with their API from inside of Emacs. I've been using for myself for a few weeks.

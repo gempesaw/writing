@@ -1,0 +1,25 @@
+---
+pagination:
+  data: collections.tagSlugs
+  size: 1
+  alias: tag
+layout: base.njk
+permalink: /tag/{{ tag.slug }}/
+eleventyComputed:
+  title: "tag: {{ tag.label }}"
+---
+<header class="tag-header">
+  <h2 class="tag-page-title">posts tagged <em>{{ tag.label }}</em></h2>
+  <p class="tag-page-meta">{{ tag.posts | length }} {{ "post" if tag.posts | length == 1 else "posts" }}</p>
+</header>
+
+<ul class="post-list">
+{% for post in tag.posts %}
+  <li class="post-list-item">
+    <h2 class="post-list-title">
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </h2>
+    <time class="post-list-date" datetime="{{ post.date | htmlDate }}">{{ post.date | readableDate }}</time>
+  </li>
+{% endfor %}
+</ul>

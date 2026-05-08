@@ -1,3 +1,9 @@
+---
+title: "setting up jabber.el"
+date: 2013-03-21
+tags: ["jabber", "jabber.el", "emacs", "elisp", "emacs-jabber", "sourceforge", "package-install", "melpa", "lisp", "setup", "install", "package", "settings", "customize", "planet emacsen", "me", "writing", "self"]
+---
+
 I recently added [`jabber.el`](http://emacs-jabber.sourceforge.net/) to my workflow via `package-install jabber`. `Jabber.el` seems to be in a really good place in terms of usage and polished development. The only hiccup I had was that it was complaining about starttls issues. That was easy enough to google, and it seemed like I should specify the connection type as starttls. We're apparently using an expired cert or something, so I had to make starttls insecure as well. I got the impression I should be more worried about that, but oh well.
 
 <pre><code class="lisp">(setq jabber-account-list '((work-email-address

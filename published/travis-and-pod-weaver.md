@@ -1,3 +1,9 @@
+---
+title: "travis build badges, POD, dist::zilla and pod::weaver"
+date: 2014-04-12
+tags: ["travis", "travisyml", "dist::zilla", "pod::weaver", "pod-weaver", "dist-zilla", "dz", "readmeanyfrompod", "build status", "travis-ci", "build badge", "leftovers", "section::leftovers", "pod", "perl", "me", "writing", "self"]
+---
+
 I've taken the plunge with the excellent [Dist::Zilla][dz] recently
 for authoring my Perl distributions. Since picking up the maintainer
 role of [S::R::D][srd], D::Z fit my needs perfectly: speed up

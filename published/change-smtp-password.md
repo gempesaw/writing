@@ -1,3 +1,9 @@
+---
+title: "Telling auth-source (and smtpmail-send-it) about my changed email password"
+date: 2013-06-06
+tags: ["emacs", "elisp", "mu4e", "offlineimap", "auth-source", "smtpmail", "auth-source-forget-all-cached", "planet emacsen", "authinfo", "auth", "mail", "email", "imap", "sendmail", "me", "writing", "self"]
+---
+
 ![auth-source-forget-all-cached](http://d.pr/i/1SjL+)
 
 I recently had to change my email password, as properly dictated by

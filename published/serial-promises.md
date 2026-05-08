@@ -1,4 +1,8 @@
-# Executing promises serially with [].reduce
+---
+title: "Executing promises serially with [].reduce"
+date: 2017-03-03
+tags: ["reduce", "array", "node", "arrow functions", "functional programming"]
+---
 
 Recently at $WORK, we were writing a data migration script in node
 that needed to make a couple hundred requests. The first attempt was

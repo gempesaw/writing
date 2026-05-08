@@ -1,4 +1,8 @@
-# Chromedriver and the Weak Ephemeral Diffie-Hellman Public Key
+---
+title: "Chromedriver and the Weak Ephemeral Diffie-Hellman Public Key"
+date: 2015-09-04
+tags: ["webdriver", "chromedriver", "weakdh", "diffie-hellman", "chromium", "disable", "blacklist", "cli", "chromeoptions", "err_ssl_weak_server_ephemeral_dh_key", "browsermob proxy", "perl", "selenium-remote-driver", "browsermob", "security", "logjam"]
+---
 
 As of Chrome 45, there's a new error message about a
 [weak ephemeral Diffie-Hellman public key][] that started showing up

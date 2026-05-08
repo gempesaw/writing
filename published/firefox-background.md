@@ -1,4 +1,8 @@
-# Prevent Selenium Webdriver's Firefox from stealing focus on OS X
+---
+title: "Prevent Selenium Webdriver's Firefox from stealing focus on OS X"
+date: 2014-05-03
+tags: ["firefox", "background", "no click", "click", "steal focus", "prevent focus", "block focus", "selenium", "plist", "lsbackgroundonly", "info.plist", "automation", "webdriver", "me", "writing", "self", "perl webdriver tutorial"]
+---
 
 When I'm composing automated functional browser tests, I usually run
 the tests against a local instance of Webdriver on my own computer to

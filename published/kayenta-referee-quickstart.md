@@ -1,4 +1,8 @@
-# Getting started with standalone Kayenta + Referee for Automated Canary Analysis
+---
+title: "Getting started with standalone Kayenta + Referee for Automated Canary Analysis"
+date: 2021-04-16
+tags: ["kayenta", "referee", "automated canary", "canary", "spinnaker", "devops", "ci", "cd"]
+---
 
 Automated canary analysis is a deploy strategy wherein you direct a
 subset of your (production?) traffic to a canary version of your

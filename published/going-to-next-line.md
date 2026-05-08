@@ -1,3 +1,9 @@
+---
+title: "convenience functions: eol punctuation and creating new lines"
+date: 2013-03-20
+tags: ["eol", "global-set-key", "lambda", "interactive", "indent", "reindent", "newline", "comma", "semicolon", "elisp", "emacs", "convenience", "planet emacsen", "me", "writing", "self"]
+---
+
 Writing perl and php, I often find myself needing commas or semicolons at the end of a line. After I got tired of doing `C-e ; <return>` and `C-e , <return>` all the time I decided I'd make things easier on myself.
 
     (global-set-key (kbd "C-,") (lambda () (interactive)

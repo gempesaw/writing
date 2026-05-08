@@ -1,3 +1,9 @@
+---
+title: "Getting Started with the Appium Perl Bindings"
+date: 2015-01-08
+tags: ["android", "perl", "appium", "getting started", "introduction", "github", "perl-client", "sdk", "perl-appium-tutorial", "perl webdriver tutorial"]
+---
+
 We've started work on a set of Perl client bindings for Appium. We're
 using Appium to test out a few different ideas for mobile apps, and
 since our existing browser automation framework is written in Perl, it

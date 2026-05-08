@@ -1,3 +1,9 @@
+---
+title: "Bitlbee’s account xml file on os x"
+date: 2015-07-29
+tags: ["bitlbee", "xml", "account", "os x", "mavericks", "homebrew"]
+---
+
 This is primarily for me to find next time I run into this issue!
 Having previously installed bitlbee on my OS X machine via
 [homebrew & some elbow grease], I made a one-off password for the

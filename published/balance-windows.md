@@ -1,3 +1,9 @@
+---
+title: "keeping my emacs windows balanced"
+date: 2013-03-15
+tags: ["elisp", "emacs", "delete", "window", "split", "right", "below", "balance-windows", "enlarge-window", "c-x 2", "c-x 3", "split-window-below", "split-window-right", "delete-window", "planet emacsen", "me", "writing", "self"]
+---
+
 I've decided to get a bit OCD about my window sizes in Emacs, and I got tired of hitting `C-x +` to do `balance-windows` all the time. I'm not sure if there's a better way to do this, but I just added some advice around all of the commands I usually use to change the window layout: `split-window-below`, `split-window-right`, and `delete-window`.
 
     (defadvice split-window-below (after restore-balanace-below activate)

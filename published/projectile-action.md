@@ -1,3 +1,9 @@
+---
+title: "bookmarking magit buffers with projectile"
+date: 2014-04-04
+tags: ["emacs", "magit", "projectile", "bookmark", "projectile-vc", "projectile-switch-project", "bozhidar batsov", "me", "writing", "self"]
+---
+
 For the longest time, I've wanted to be able to bookmark the
 [`magit`][magit] buffers of my various git projects. It's really
 useful to be able to jump to the top level view and get a `git status`

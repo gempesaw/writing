@@ -1,4 +1,8 @@
-# Using Emacs for daily reminders to write in my ~/diary
+---
+title: "Using Emacs for daily reminders to write in my ~/diary"
+date: 2015-02-01
+tags: ["diary", "calendar", "emacs", "elisp", "personal", "workflow", "journal", "remote", "working remotely", "remotie", "planet emacsen"]
+---
 
 ![diary](https://raw.githubusercontent.com/gempesaw/writing/master/published/diary-management.png)
 

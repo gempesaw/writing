@@ -1,3 +1,9 @@
+---
+title: "The Abuse and Misuse of Test Automation – Interview with Alan Page - Fog Creek Blog"
+date: 2015-05-28
+tags: ["qa", "automation", "alan page", "angryweasel", "test automation", "e2e", "webdriver", "selenium", "honeydew", "fog creek"]
+---
+
 I've been thinking recently that one of the big problems we're having
 with automation at work is caused by previous-me of years past
 encouraging the idea of "oh doing automation is easy, look, gherkin is

@@ -1,3 +1,9 @@
+---
+title: "best practices for angular project structure"
+date: 2014-04-17
+tags: ["best practices", "angularjs", "blog", "2014", "yo angular", "generator-angular", "beda", "javascript", "thoughts", "web dev", "me", "writing", "self"]
+---
+
 A few months ago, the AngularJS team published a [document][gd]
 outlining a new best-practices project structure. There's also a
 (huge) Github [issue discussing its pros and cons][gh] in finer

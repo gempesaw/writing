@@ -1,3 +1,9 @@
+---
+title: "clearing pngs off of my desktop"
+date: 2013-03-18
+tags: ["delete", "pngs", "all", "desktop", "save-window-excursion", "dired", "revert-buffer", "elisp", "emacs", "convenience", "defun", "planet emacsen", "me", "writing", "self"]
+---
+
 A huge part of doing QA is taking screenshots and videos. Luckily, OS X makes it super easy to take screenshots with `Command + Shift + 4`. Unluckily, doing that all day long every day means the desktop gets super cluttered with your beautiful bug report pngs! Instead of manually deleting 'em, let Emacs do it for you :)
 
     (defun delete-all-pngs-on-desktop ()

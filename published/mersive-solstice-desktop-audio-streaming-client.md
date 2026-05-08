@@ -1,4 +1,8 @@
-# Uninstalling Mersive's Solstice Audio Driver from MacOS Mojave
+---
+title: "Uninstalling Mersive's Solstice Audio Driver from MacOS Mojave"
+date: 2019-08-06
+tags: ["mersive", "solstice client", "wework", "desktop audio streaming device", "mojave", "macos", "uninstall", "bug"]
+---
 
 This was a minor annoyance, but since my Google searches were particularly unfruitful, I figured I'd make a note of it. Our WeWork uses the Mersive Solstice client for broadcasting our devices to the meeting room televisions. It has the option to install its own audio driver to try to mirror the audio on its own.
 

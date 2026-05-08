@@ -1,3 +1,9 @@
+---
+title: "Cannot open load file: subst-ksc - os x 10.9.2, emacs 24.4.50.1"
+date: 2014-05-17
+tags: ["emacs", "elisp", "subst-ksc", "subst-gb2312", "mysterious but stupid errors", "symlink", "homebrew", "emacs24.4", "cask", "ert-runner", "cask exec ert-runner", "me", "writing", "self"]
+---
+
 I'm on OS X Mavericks 10.9.2, running Emacs 24.4.50.1 GNU Emacs
 24.4.50.1 (x86_64-apple-darwin13.1.0, NS apple-appkit-1265.19)
 [compiled via homebrew][brew]. I was trying to get back into Emacs

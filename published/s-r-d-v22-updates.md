@@ -1,3 +1,9 @@
+---
+title: "Upcoming updates for Selenium::Remote::Driver"
+date: 2014-10-20
+tags: ["perl", "selenium remote driver", "finders", "peroumal1", "github", "changes", "v0.22", "cpan", "features", "bugfixes", "driver", "appium", "perl bindings", "me", "writing", "self", "perl webdriver tutorial"]
+---
+
 We're gearing up for the release of v0.22 of Selenium-Remote-Driver, a set of Perl bindings for the Webdriver project. My primary motivation to get a new release out is to tweak some of the classes to be more easily extended, so that the perl bindings for [Appium](https://github.com/appium/perl-client) can be written more cleanly. But, there's also some cleanup for deprecated functions and a few bugfixes included, along with plans for another release in the near future. 
 
 * Before we get in to the changes, here's a heads up about the new mailing list for the perl bindings: https://groups.google.com/forum/#!forum/selenium-remote-driver :D

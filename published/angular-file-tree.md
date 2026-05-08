@@ -1,4 +1,8 @@
-# An AngularJS File Tree ( with a PHP backend )
+---
+title: "An AngularJS File Tree (with a PHP backend)"
+date: 2014-04-25
+tags: ["angularjs", "php", "tree"]
+---
 
 Something I needed in my AngularJS app was a file tree that exposed a
 few folders full of flat files to the user. At the beginning of 2014,

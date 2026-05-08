@@ -1,3 +1,9 @@
+---
+title: "Selenium::Remote::Driver@0.25: now with slightly less JRE"
+date: 2015-04-20
+tags: ["selenium-remote-driver", "srd", "selenium::remote::driver", "selenium::firefox", "selenium::chrome", "selenium::phantomjs", "perl", "webdriver", "perl-webdriver", "jre", "standalone", "perl-webdriver-tutorial"]
+---
+
 We've just released version 0.25 of Selenium::Remote::Driver to the
 various CPANs. The big push this time around was to get around our
 hard dependency on the JRE. Previously, the Perl bindings demanded a

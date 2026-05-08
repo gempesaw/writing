@@ -1,0 +1,10 @@
+{
+  "title": "elisp solves problems",
+  "description": "used to be about elisp, now it's about other stuff",
+  "url": "https://blog.danielgempesaw.com",
+  "author": {
+    "name": "Daniel Gempesaw",
+    "email": "gempesaw@gmail.com"
+  },
+  "language": "en"
+}

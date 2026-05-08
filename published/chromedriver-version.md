@@ -1,3 +1,9 @@
+---
+title: "Unknown command 'WaitForAllTabsToStopLoading'"
+date: 2013-08-21
+tags: ["webdriver", "chromedriver", "selenium", "automatic updates", "chrome", "qa", "testing", "waitforalltabstostoploading", "dying", "unknown command", "me", "writing", "self"]
+---
+
 I woke up this morning and went to run some Webdriver jobs in Chrome, but for some reason they weren't working! The browser would start up, and then it would die, complaining about an unknown command called 'WaitForAllTabsToStopLoading'
 
     Dying: Error while executing command: An unknown server-side error occurred 

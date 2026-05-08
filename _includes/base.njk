@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} &mdash; {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+      <p class="site-tagline">{{ site.description }}</p>
+    </header>
+    <main>
+      {{ content | safe }}
+    </main>
+    <footer class="site-footer">
+      <p>
+        <a href="/">home</a> &middot;
+        <a href="/archive/">archive</a> &middot;
+        <a href="/feed.xml">rss</a> &middot;
+        <a href="https://github.com/gempesaw">github</a> &middot;
+        <a href="https://github.com/jxnblk/Ashley">theme</a> &middot;
+        <a href="https://github.com/sailorhg/fairyfloss">color-scheme</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

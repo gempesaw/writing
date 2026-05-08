@@ -1,3 +1,9 @@
+---
+title: "markdown-preview with syntax highlighting"
+date: 2013-04-01
+tags: ["emacs", "markdown"]
+---
+
 In a previous post, I talked about [adding syntax-highlighting to this blog](). It's working out quite well for me, but I wanted to pull it into my composition workflow better. My current suboptimal workflow is to compose markdown in Emacs and copy/paste into Tumblr's web app. (Tumblesocks is having connection problems that I don't feel like figuring out quite yet.) When I `markdown-preview`, I want to be able to see my code in all its syntax highlighted glory. Let's look at `markdown-preview`:
 
     (defun markdown-preview (&optional output-buffer-name)
