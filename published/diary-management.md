@@ -11,6 +11,8 @@ recalling what I did the previous day, much less for a whole week, so
 I began looking into what options Emacs offered for daily diary
 note-keeping kind of things[^2].
 
+[[MORE]]
+
 Google told me that I should to use the `calendar` and `diary`
 functions to make my notes. `M-x calendar` brings up a three month
 calendar view, and `M-x diary` opens the `~/diary` file on your

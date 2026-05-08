@@ -11,8 +11,9 @@ running in the application.
 But, things are a little more complicated for Java or Scala apps,
 because configuration of certificate authorities is done at the JVM
 level, not at the code level. And for an extra level of fun, we want
-to do it in Kubernetes, transparently to our developers, so they don't
-have to worry about it on their own.
+to do it in Kubernetes, transparently to our developers, so they don't have to worry about it on their own.
+
+[[MORE]]
 
 ### err, wha? telling the JVM about our CA
 
@@ -25,7 +26,8 @@ that the JVM wants, and then use system properties to tell the JVM to
 use that keystore. The `keytool` command in the docs is:
 
 ```
-$ keytool -importcert -trustcacerts -file <path to certificate authority file> -keystore <path to trust store> -storepass <password>
+$ keytool -importcert -trustcacerts -file <path to certificate authority file> \
+  -keystore <path to trust store> -storepass <password>
 ```
 
 The path to the existing keystore that the JVM uses by default is
@@ -34,7 +36,8 @@ The path to the existing keystore that the JVM uses by default is
 existing keystore, it'd be something like
 
 ```
-$ keytool -importcert -trustcacerts -file ssca.cer -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
+$ keytool -importcert -trustcacerts -file ssca.cer \
+  -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
 ```
 
 (Even this very first step had complications. Our self signed CA was a
@@ -142,7 +145,9 @@ spec:
       initContainers:
       - name: copy
         image: openjdk:8u121-alpine
-        command: [ cp, /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts, /ssca/truststore/cacerts ]
+        command: [ cp,
+                   /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts,
+                   /ssca/truststore/cacerts ]
         volumeMounts:
         - name: truststore
           mountPath: /ssca/truststore
@@ -200,7 +205,7 @@ which would pass the option to the jar instead of setting a system
 property. Plus, that wouldn't work at all if the `ENTRYPOINT` was a
 shell script or something that wasn't expecting arguments.
 
-After some searching, StackOverflow taught us about the `_JAVA_OPTIONS`
+After some searching, StackOverflow taught us about the `JAVA_OPTS`
 and `JAVA_TOOL_OPTIONS` [environment variables][javaOpts]. We can
 append our trustStore to the existing value of these env vars, and
 we'd be good to go!
@@ -213,7 +218,7 @@ spec:
       - image: your-app-image
         env:
           # make sure not to overwrite this when composing the yaml
-        - name: _JAVA_OPTIONS
+        - name: JAVA_OPTS
           value: -Djavax.net.ssl.trustStore=/ssca/truststore/cacerts
         volumeMounts:
         - name: truststore
@@ -222,7 +227,7 @@ spec:
 ```
 
 In our app that we use to construct the manifests, we check if the
-developer is already trying to set _JAVA_OPTIONS to something, and make
+developer is already trying to set JAVA_OPTS to something, and make
 sure that we append to the existing value instead of overwriting it.
 
 ### a conclusion of sorts

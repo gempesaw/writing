@@ -81,7 +81,7 @@ with Appium in the next step.
 
 I ran Appium with my Galaxy Nexus hooked up to my laptop via USB, with
 the [USB debugging mode on][usb]; you'll need to do the same if you
-want to run on a device. [^1]
+want to run on a device[^1]
 
 [usb]: http://developer.android.com/tools/device.html
 
@@ -149,12 +149,12 @@ There's more information about the appium caps in
 Remember to point your bindings at the correct port - by default,
 `appium` starts up on `4723`. Pass in your capabilities object, and
 you should be good to go - running that script with my Galaxy Nexus
-plugged in on USB debugging mode opened the app with the default
-Cordova splash screen. Without that last sleep, the app pops open and
+plugged in on USB debugging mode opened the [app with the default
+Cordova splash screen][screenshot]. Without that last sleep, the app pops open and
 closed too quickly to notice, but of course you can remove it when
 writing real test scripts.
 
-![ionic and appium](https://24.media.tumblr.com/86e48dd9a4d562ada08f0e1f6a93d7e6/tumblr_n4jfqePOip1qahaiko1_1280.png =250x)
+[screenshot]: https://24.media.tumblr.com/86e48dd9a4d562ada08f0e1f6a93d7e6/tumblr_n4jfqePOip1qahaiko1_1280.png
 
 [docs]: https://github.com/appium/appium/blob/master/docs/en/caps.md
 [^1]: To emulate the Android app, there's some useful information

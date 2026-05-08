@@ -1,4 +1,4 @@
-I recently [heard about a new version]() of [`circe`]() coming out so I went to try it out. I don't remember why I stopped using `erc` but afaik they both seem fine to use.
+I recently [heard about a new version](https://plus.google.com/115251065755572046236/posts/iURXPzzSWaH) of [`circe`](https://github.com/jorgenschaefer/circe/wiki) coming out so I went to try it out. I don't remember why I stopped using `erc` but afaik they both seem fine to use.
 
 <pre><code class="lisp">(package-install 'circe)
 (setq circe-network-options

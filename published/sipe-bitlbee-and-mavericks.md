@@ -21,33 +21,33 @@ the steps I followed.
 
 `--with-pidgin` specifies the `pidgin` package as a dependency, which
 I believe we'll need to manually compile `pidgin-sipe`, since it's not
-available on homebrew.
+available on homebrew. In case `brew link bitlbee` doesn't put `bitlbee` in your path, you can just
+
+    $ ln -s /usr/local/Cellar/bitlbee/3.2.2/sbin/bitlbee /usr/local/bin/bitlbee
 
 ### 2. get pidgin-sipe
 
 `pidgin-sipe` will teach bitlbee how to speak SIPE! Download the
 latest tarball from the sipe project [on SourceForge][sipe]. At time
 of writing, the direct download link to 1.18.4 is [here][]. Compiling
-it requires `gettext`, so get that from homebrew real quick:
+it requires `gettext`, and it may not be linked by default, so link it if necessary:
 
 [sipe]: http://sourceforge.net/projects/sipe/files/sipe/
 [here]:
 http://sourceforge.net/projects/sipe/files/sipe/pidgin-sipe-1.18.4/pidgin-sipe-1.18.4.tar.gz/download
 
-    $ brew install gettext
     $ brew link --force gettext
 
-Unzip the tarball, get in that folder, and get to work [compiling][c]
+Unzip the `pidgin-sipe.tar.gz` tarball, get in that folder, and get to work [compiling][c]
 it:
 
 [c]: http://sourceforge.net/p/sipe/discussion/688534/thread/9b11e2b4
 
-    $ ./configure -disable-quality-check -prefix=/usr/local/
+    $ ./configure --disable-quality-check --prefix=/usr/local/
     $ make
     $ sudo make install
 
-The `-prefix` option just puts stuff where Homebrew does, which may or
-may not be a good idea; I've no idea.
+The `-prefix` option apparently is used to tell pidgin-sipe where to find the libpurple files that we installed as part of `pidgin` during the earlier `bitlbee --with-pidgin` step. 
 
 ### 3. tell bitlbee what's up!
 
@@ -63,9 +63,7 @@ join the control channel "&bitlbee"[^1]. Say `help purple` in the
 &bitlbee channel to see your potential protocols, and hopefully `sipe
 (Office Communicator)` will show up in the list! If it's missing,
 you'll need to go back and verify your dependencies. Forging bravely
-on, add an account with the sipe protocol - although the
-[Bitlbee wiki][w] says to include DOMAIN\LOGIN for the `account add
-sipe` command, I left it blank and had no troubles logging in. YMMV.
+on, add an account with the sipe protocol - although the [Bitlbee wiki][w] says to include DOMAIN\LOGIN for the `account add sipe` command, I left it blank and had no troubles logging in. YMMV.
 
 [w]: http://wiki.bitlbee.org/HowtoSIPE
 

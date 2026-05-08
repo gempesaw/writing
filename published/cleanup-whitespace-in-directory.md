@@ -1,4 +1,4 @@
-# Cleaning up whitespace in directories with a small elisp
+# Cleaning up whitespace in directories with some elisp
 
 I had a project with an outdated indentation convention. Present-me
 recently decided to change bracket conventions from the way past-me
@@ -30,8 +30,7 @@ It takes a directory, a regex to optionally match against, and a flag
 to determine whether or not to recurse the parent directory. Small
 problem, small elisp: problem solved :).
 
-I did glance at the changes before committing them, and caught one case
-where the formatter got confused and stopped indenting things
+I did glance at the changes before committing them, and caught one case where the formatter got confused and stopped indenting things
 entirely, but there was only one such case that I noticed...
 
 [magnar's]: http://whattheemacsd.com/buffer-defuns.el-01.html

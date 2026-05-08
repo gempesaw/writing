@@ -1,4 +1,4 @@
-# Executing promises in serial with [].reduce
+# Executing promises serially with [].reduce
 
 Recently at $WORK, we were writing a data migration script in node
 that needed to make a couple hundred requests. The first attempt was
@@ -15,6 +15,7 @@ just to wrap everything up in a Promise.all:
     Promise.all(urls.map((url) => rp.get(url)
                          .then(sendRelatedRequests)));
 
+[[MORE]]
 
 However, the internal server we were talking to wasn't able to handle
 all of the requests concurrently, and since the subsequent logic would
@@ -24,12 +25,10 @@ and since Promises execute once they're made, that means all the
 requests were starting off at roughly the same time.
 
 So, for our second pass, we decided we wanted to only send one request
-at a time, lining up all of our requests in serial, since we know that
+at a time, lining up all of our requests serially, since we know that
 when the server finishes responding to our nth request, it should be
 ready to handle the (n+1)th request. One way to accomplish this is
-with a big long chain of `.then`s, as by the time we're in the
-`.then`, we're guaranteed that its preceding promise is completed. And
-one way we can construct that chain is with a reduce:
+with a big long chain of `.then`s, as by the time we're in a `.then`, we're guaranteed that its preceding promise is completed. And one way we can construct that chain is with a reduce:
 
     urls.reduce(
         (acc, url) => acc.then(() => rp.get(url).then(sendRelatedRequests)),

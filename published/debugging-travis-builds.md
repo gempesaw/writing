@@ -87,7 +87,7 @@ afterwards.
 
 In not-so stunning turn of events that seems incredibly obvious now,
 the problem seems to arise after installing
-[Dist::Zilla::TravisCI][pod]. In the generated travis script, the
+[Dist::Zilla::Plugin::TravisYML][pod]. In the generated travis script, the
 author deps are installed with `cpanm --notest`, so it's not caught
 until the next time we attempt to `dzil listdeps`. Stepping through
 the tests one by one, the `::TravisCI` install actually fails its own
@@ -98,4 +98,4 @@ So, in theory, commenting out the `[TravisYML]` from dist.ini should
 remove it from `dzil authordeps` and we should be good to go. I'm
 going to go try that now...
 
-[pod]: https://metacpan.org/pod/Dist::Zilla::TravisCI
+[pod]: https://metacpan.org/pod/Dist::Zilla::Plugin::TravisYML

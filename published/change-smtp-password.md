@@ -17,7 +17,7 @@ it, and `smtpmail-send-it` to send it.
 `Offlineimap` manages its password stuff from a config file at
 `~/.offlineimaprc`. I updated that file and I was able to continue
 retrieving my mail with no hiccoughs. I then updated my `~/.authinfo`
-file as well with the new password, but I was continued to get the
+file as well with the new password, but I continued to get the
 authentication failed error.
 
     Sending failed: 535 5.7.3 Authentication unsuccessful in response to base64-encoded-password

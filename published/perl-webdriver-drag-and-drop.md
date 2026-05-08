@@ -38,7 +38,7 @@ same directory as your test script, your test might look like:
 
     my $d = Selenium::Remote::Driver->new;
 
-    $d->get('http://the-internet.herokuapp.com/drag_and_drop');
+    $d->get('http://blog.danielgempesaw.com/post/103347925809');
 
     my $grab = $d->find_element('column-a', 'id');
     my $target = $d->find_element('column-b', 'id');
@@ -178,3 +178,4 @@ var cols = document.querySelectorAll('#columns .column');
   col.addEventListener('dragend', handleDragEnd, false);
 });
 </script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>

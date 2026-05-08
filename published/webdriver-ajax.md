@@ -1,4 +1,4 @@
-# Waiting for a page to load in Selenium::Remote::Driver
+# Waiting for a page to load in Selenium::Remote::Driver with Selenium::Waiter
 
 One of the first problems we come up against when trying to use
 Webdriver to automate a web application is handling the asynchronicity
@@ -41,12 +41,14 @@ close to this ideal behavior:
 
     # wait_until will also catch dies and croaks
     my $elem = wait_until { $d->find_element_by_css('div') };
+    
     if ($elem) {
         say 'Text: ' . $elem->get_text;
     }
     else {
         say 'We waited thirty seconds without finding css=div';
     }
+
 
 `wait_until` takes a block and an optional hashref of arguments. It
 wraps the block execution in a `try`/`catch` from [Try::Tiny][]. By

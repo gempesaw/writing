@@ -1,5 +1,3 @@
-re: http://blog.fogcreek.com/the-abuse-and-misuse-of-test-automation-interview-with-alan-page/
-
 I've been thinking recently that one of the big problems we're having
 with automation at work is caused by previous-me of years past
 encouraging the idea of "oh doing automation is easy, look, gherkin is
@@ -21,7 +19,7 @@ similar ideas about how to do automated testing well, pointing out
 that having junior developers write (e2e) tests often leads to
 failure, where as more senior developers who are comfortable with the
 complexity of the entire system are actually able to successfully
-write useful tests.
+write useful tests:
 
 > Another reason, and I’m sorry to say this, is often we have is this,
 > really scary when you think about it, to me at least… We often have

@@ -1,5 +1,3 @@
-Getting Started with the Appium Perl Bindings
-
 We've started work on a set of Perl client bindings for Appium. We're
 using Appium to test out a few different ideas for mobile apps, and
 since our existing browser automation framework is written in Perl, it
@@ -144,9 +142,6 @@ started after you fill in the path to your apk.
 At this point, it's up to you to write your tests! :) If anything
 doesn't work, check the Appium log for warnings and errors, especially
 about `ANDROID_HOME` or any of the environment variables we set up
-previously.
+previously. 
 
-Feel free to reach out with any issues; if you come across bugs in the
-Perl client bindings, its
-[Github repository](https://github.com/appium/perl-client) is waiting
-for its first bug report! Good luck!
+Feel free to reach out with any issues; if you come across bugs in the Perl client bindings, its [Github repository](https://github.com/appium/perl-client) is waiting for its first bug report! Good luck!

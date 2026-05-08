@@ -19,6 +19,8 @@ You can read through the details below in this blog post, or go
 straight to the [kayenta-referee-quickstart repo][] to get started
 right away.
 
+[[MORE]]
+
 ## Configuring Kayenta
 
 Starting up Kayenta consists mainly of configuring its three data
@@ -91,7 +93,7 @@ Canary configurations inside Kayenta.
 
 ## integrating kayenta + referee into your production deploys
 
-If you're embarking on the canary <--> production deploy integration
+If you're embarking on the canary  production deploy integration
 road, one of the most useful tips I came across was to start out with
 an asynchronous canary pipeline separate from your existing production
 pipeline. Have the canary pipeline run in parallel to your existing
@@ -111,4 +113,4 @@ its own blog post, so we'll defer that to a potential part two!
 [Kayenta]: https://github.com/spinnaker/kayenta
 [Spinnaker]: https://github.com/spinnaker
 [Referee]: https://github.com/nikeinc/referee
-[quickstart repo]: https://github.com/gempesaw/kayenta-referee-quickstart
+[kayenta-referee-quickstart repo]: https://github.com/gempesaw/kayenta-referee-quickstart

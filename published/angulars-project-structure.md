@@ -2,7 +2,7 @@ A few months ago, the AngularJS team published a [document][gd]
 outlining a new best-practices project structure. There's also a
 (huge) Github [issue discussing its pros and cons][gh] in finer
 detail, and it was mentioned in the `generator-angular` [2014 Q1
-roadmap issue][gh2]
+roadmap issue][gh2].
 
 The old recommended structure, which is what `yo angular` generates,
 groups files together by function: controllers are with other
